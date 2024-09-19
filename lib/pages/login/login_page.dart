@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:meu_das_flutter/pages/home_page.dart';
 import 'package:meu_das_flutter/pages/login/forgot_my_password_page.dart';
 import 'package:meu_das_flutter/utils/app_colors.dart';
+import 'package:meu_das_flutter/utils/navigator_utils.dart';
 import 'package:meu_das_flutter/widgets/input_widget.dart';
 
 class LoginPage extends StatefulWidget {
@@ -76,27 +77,22 @@ class _LoginPageState extends State<LoginPage> {
                     style: ElevatedButton.styleFrom(
                       alignment: Alignment.center,
                       shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(0)),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
                       backgroundColor: AppColors.purple,
                     ),
                     onPressed: () {
                       if (controllerCpf.value.text == "admin" &&
                           controllerPassword.value.text == "admin") {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) {
-                              return const HomePage();
-                            },
+                        NavigatorUtils.navigatorScreen(
+                            context, const HomePage());
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Login inválido'),
                           ),
                         );
-                        return;
                       }
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Login inválido'),
-                        ),
-                      );
                     },
                     child: Text(
                       "Entrar",
