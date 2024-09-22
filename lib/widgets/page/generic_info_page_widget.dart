@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:meu_das_flutter/utils/app_colors.dart';
-import 'package:meu_das_flutter/widgets/input_widget.dart';
+import 'package:meu_das_flutter/widgets/utils/button_widget.dart';
+import 'package:meu_das_flutter/widgets/utils/input_widget.dart';
+import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
 
 class GenericInfoPageWidget extends StatefulWidget {
   final IconData icon;
@@ -45,20 +46,12 @@ class _GenericInfoPageWidgetState extends State<GenericInfoPageWidget> {
                   color: AppColors.purple,
                 ),
                 const Padding(padding: EdgeInsets.symmetric(vertical: 25)),
-                Text(
-                  widget.title,
-                  style: GoogleFonts.ubuntu(
-                    fontSize: 25,
-                    color: AppColors.purple,
-                    fontWeight: FontWeight.bold,
-                  ),
+                TextWidget.title(
+                  text: widget.title,
                 ),
                 const Padding(padding: EdgeInsets.only(top: 25)),
-                Text(
-                  widget.description,
-                  style: GoogleFonts.ubuntu(
-                    fontSize: 17,
-                  ),
+                TextWidget.description(
+                  text: widget.description,
                 ),
                 const Padding(padding: EdgeInsets.only(top: 50)),
                 if (widget.controller != null && widget.hintText != null) ...[
@@ -70,24 +63,9 @@ class _GenericInfoPageWidgetState extends State<GenericInfoPageWidget> {
                   ),
                   const Padding(padding: EdgeInsets.only(top: 50)),
                 ],
-                FractionallySizedBox(
-                  widthFactor: 1,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      alignment: Alignment.center,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                      backgroundColor: AppColors.purple,
-                    ),
-                    onPressed: widget.onPressed,
-                    child: Text(
-                      widget.buttonText,
-                      style: GoogleFonts.ubuntu(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
+                ButtonWidget(
+                  buttonText: widget.buttonText,
+                  onPressed: widget.onPressed,
                 ),
               ],
             ),

@@ -17,4 +17,5 @@ const _neutral = <int, Color>{
 
 abstract class AppColors {
   static const MaterialColor purple = MaterialColor(0xFF2C36D4, _neutral);
+  static const MaterialColor black = MaterialColor(0xFF000000, _neutral);
 }

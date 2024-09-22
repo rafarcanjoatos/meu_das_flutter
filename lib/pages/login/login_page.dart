@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:meu_das_flutter/pages/home_page.dart';
-import 'package:meu_das_flutter/pages/login/forgot_my_password_page.dart';
-import 'package:meu_das_flutter/utils/app_colors.dart';
+import 'package:meu_das_flutter/pages/app/home_page.dart';
+import 'package:meu_das_flutter/pages/forgot_password/forgot_my_password_page.dart';
+import 'package:meu_das_flutter/utils/app_strings.dart';
 import 'package:meu_das_flutter/utils/navigator_utils.dart';
-import 'package:meu_das_flutter/widgets/input_widget.dart';
+import 'package:meu_das_flutter/widgets/utils/button_widget.dart';
+import 'package:meu_das_flutter/widgets/utils/input_widget.dart';
+import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -27,25 +28,18 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "meuDAS",
-                  style: GoogleFonts.ubuntu(
-                    color: AppColors.purple,
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                TextWidget.logoBig(text: AppStrings.appName),
                 const Padding(padding: EdgeInsets.symmetric(vertical: 25)),
                 InputWidget(
                   controller: controllerCpf,
-                  hintText: "CPF",
+                  hintText: AppStrings.hintTextCpf,
                   autoFocus: true,
                   keyboardType: TextInputType.number,
                 ),
                 const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
                 InputWidget(
                   controller: controllerPassword,
-                  hintText: "Senha",
+                  hintText: AppStrings.hintTextPassword,
                   keyboardType: TextInputType.visiblePassword,
                   obscure: true,
                 ),
@@ -53,55 +47,20 @@ class _LoginPageState extends State<LoginPage> {
                 Align(
                     alignment: Alignment.centerRight,
                     child: GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) {
-                              return const ForgotMyPasswordPage();
-                            },
-                          ),
-                        );
-                      },
-                      child: Text(
-                        "Esqueci Minha Senha",
-                        style: GoogleFonts.ubuntu(
-                          color: AppColors.purple,
-                          fontWeight: FontWeight.w600,
-                        ),
+                      onTap: () => NavigatorUtils.navigatorScreen(
+                        context,
+                        const ForgotMyPasswordPage(),
+                      ),
+                      child: TextWidget.link(
+                        text: AppStrings.linkForgotMyPassword,
                       ),
                     )),
                 const Padding(padding: EdgeInsets.only(top: 50)),
-                FractionallySizedBox(
-                  widthFactor: 1,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      alignment: Alignment.center,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                      backgroundColor: AppColors.purple,
-                    ),
-                    onPressed: () {
-                      if (controllerCpf.value.text == "admin" &&
-                          controllerPassword.value.text == "admin") {
-                        NavigatorUtils.navigatorScreen(
-                            context, const HomePage());
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Login inválido'),
-                          ),
-                        );
-                      }
-                    },
-                    child: Text(
-                      "Entrar",
-                      style: GoogleFonts.ubuntu(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
+                ButtonWidget(
+                  onPressed: () =>
+                      NavigatorUtils.navigatorScreen(context, HomePage()),
+                  buttonText: AppStrings.buttonLogin,
+                )
               ],
             ),
           ),
