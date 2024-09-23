@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:meu_das_flutter/widgets/bar/app_bar_widget.dart';
-import 'package:meu_das_flutter/widgets/bar/bottom_navigation_bar_widget.dart';
+import 'package:meu_das_flutter/widgets/menu/grid_view_widget.dart';
+import 'package:meu_das_flutter/widgets/page/generic_app_page_widget.dart';
+import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -12,22 +13,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const AppBarWidget(),
-      body: Column(
-        children: [
-          Container(
-            height: 2.0,
-            color: const Color.fromARGB(255, 179, 179, 179).withOpacity(0.7),
-          ),
-          const Expanded(
-            child: Center(
-              child: Text('Conteúdo do App'),
-            ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBarWidget(currentPageIndex: 1),
+    return GenericAppPageWidget(
+      body: GridViewWidget(),
+      pageIndex: 1,
     );
   }
 }
