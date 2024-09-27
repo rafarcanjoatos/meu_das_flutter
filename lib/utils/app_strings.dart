@@ -21,4 +21,12 @@ class AppStrings {
   static const String menuDashboard = "Dashboard";
   static const String menuHome = "Home";
   static const String menuNotifications = "Notificações";
+
+  static const Map<String, String> menuTitles = {
+    "menu_1": "Gerar DAS",
+    "menu_2": "Meus Dados",
+    "menu_3": "Histórico DAS",
+    "menu_4": "Dashboard",
+    "menu_5": "Notificações",
+  };
 }

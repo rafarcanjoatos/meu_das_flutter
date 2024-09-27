@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:meu_das_flutter/utils/app_colors.dart';
 
-// ignore: must_be_immutable
 class ButtonWidget extends StatefulWidget {
-  void Function()? onPressed;
-  String buttonText;
+  final void Function()? onPressed;
+  final String buttonText;
 
-  ButtonWidget({
+  const ButtonWidget({
     super.key,
     required this.onPressed,
     required this.buttonText,

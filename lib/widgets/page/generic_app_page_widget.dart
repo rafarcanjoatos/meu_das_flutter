@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meu_das_flutter/widgets/bar/app_bar_widget.dart';
 import 'package:meu_das_flutter/widgets/bar/bottom_navigation_bar_widget.dart';
+import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
 
 class GenericAppPageWidget extends StatefulWidget {
   Widget body;
@@ -21,14 +22,18 @@ class _GenericAppPageWidgetState extends State<GenericAppPageWidget> {
     return Scaffold(
       appBar: const AppBarWidget(),
       body: Padding(
-        padding: const EdgeInsets.all(25.0),
+        padding: const EdgeInsets.all(30.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 650,
-              width: double.infinity,
-              child: Center(
-                child: widget.body,
+            TextWidget.description(text: "XYZ Company"),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 20)),
+            Expanded(
+              child: SizedBox(
+                width: double.infinity,
+                child: Center(
+                  child: widget.body,
+                ),
               ),
             ),
           ],

@@ -25,11 +25,9 @@ class _AppBarWidgetState extends State<AppBarWidget> {
         ),
       ),
       child: AppBar(
-        title: Padding(
-          padding: const EdgeInsetsDirectional.only(start: 50),
-          child: TextWidget.logoSmall(
-            text: AppStrings.appName,
-          ),
+        centerTitle: true,
+        title: TextWidget.logoSmall(
+          text: AppStrings.appName,
         ),
       ),
     );

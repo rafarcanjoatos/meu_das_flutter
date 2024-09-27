@@ -47,7 +47,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
         });
         _navigateToPage(index);
       },
-      selectedIndex: widget.currentPageIndex,
+      selectedIndex: widget.currentPageIndex, 
       destinations: const <Widget>[
         NavigationDestination(
           icon: Icon(Icons.signal_cellular_alt),
@@ -59,7 +59,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
         ),
         NavigationDestination(
           icon: Badge(
-            label: Text('2'),
+            label: Text('3'),
             child: Icon(Icons.notifications_sharp),
           ),
           label: AppStrings.menuNotifications,

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:meu_das_flutter/utils/app_colors.dart';
+import 'package:meu_das_flutter/pages/app/dashboard_page.dart';
+import 'package:meu_das_flutter/pages/app/home_page.dart';
+import 'package:meu_das_flutter/pages/app/notifications_page.dart';
+import 'package:meu_das_flutter/utils/app_strings.dart';
 import 'package:meu_das_flutter/widgets/utils/item_menu_widget.dart';
-import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
 
 class GridViewWidget extends StatefulWidget {
   const GridViewWidget({super.key});
@@ -13,17 +15,55 @@ class GridViewWidget extends StatefulWidget {
 class _GridViewWidgetState extends State<GridViewWidget> {
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 2,
-      crossAxisSpacing: 15,
-      mainAxisSpacing: 15,
-      children: const [
-        ItemMenuWidget(title: "Teste"),
-        ItemMenuWidget(title: "Teste 2"),
-        ItemMenuWidget(title: "Teste 3"),
-        ItemMenuWidget(title: "Teste 4"),
-        ItemMenuWidget(title: "Teste 5"),
-        ItemMenuWidget(title: "Teste 6"),
+    return Column(
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: ItemMenuWidget(
+                icon: Icons.description,
+                title: AppStrings.menuTitles["menu_1"] ?? "",
+                page: HomePage(),
+              ),
+            ),
+          ],
+        ),
+        const Padding(
+          padding: EdgeInsets.only(
+            bottom: 16,
+          ),
+        ),
+        Expanded(
+          child: GridView.count(
+            crossAxisCount: 2,
+            crossAxisSpacing: 16,
+            mainAxisSpacing: 16,
+            childAspectRatio: 1,
+            padding: EdgeInsets.zero,
+            children: [
+              ItemMenuWidget(
+                icon: Icons.person,
+                title: AppStrings.menuTitles["menu_2"] ?? "",
+                page: HomePage(),
+              ),
+              ItemMenuWidget(
+                icon: Icons.folder_open,
+                title: AppStrings.menuTitles["menu_3"] ?? "",
+                page: HomePage(),
+              ),
+              ItemMenuWidget(
+                icon: Icons.bar_chart,
+                title: AppStrings.menuTitles["menu_4"] ?? "",
+                page: DasboardPage(),
+              ),
+              ItemMenuWidget(
+                icon: Icons.notifications,
+                title: AppStrings.menuTitles["menu_5"] ?? "",
+                page: NotificationsPage(),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
