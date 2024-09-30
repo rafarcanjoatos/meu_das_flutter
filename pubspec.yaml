@@ -60,6 +60,8 @@ flutter:
   # the material Icons class.
   assets:
     - lib/fake_api/company.json
+    - lib/fake_api/user.json
+    - lib/fake_api/notification.json
 
   uses-material-design: true
 

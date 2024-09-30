@@ -12,6 +12,10 @@ class AppStrings {
   static const String buttonSend = "Enviar";
   static const String buttonLogin = "Entrar";
   static const String buttonLoginPage = "Tela de login";
+  static const String buttonEdit = "Editar";
+  static const String buttonSave = "Salvar";
+  static const String buttonClose = "Fechar";
+  static const String buttonCancel = "Cancelar";
 
   static const String linkForgotMyPassword = "Esqueci Minha Senha";
 
@@ -21,6 +25,15 @@ class AppStrings {
   static const String menuDashboard = "Dashboard";
   static const String menuHome = "Home";
   static const String menuNotifications = "Notificações";
+
+  static const String cpf = "CPF";
+  static const String fullName = "Nome Completo";
+  static const String email = "E-mail";
+  static const String telephone = "Telefone";
+
+  static const String modalSaveEdition = "Salvar Edição";
+  static const String modalAreYouSure =
+      "Tem certeza que gostaria de salvar estas informações?";
 
   static const Map<String, String> menuTitles = {
     "menu_1": "Gerar DAS",

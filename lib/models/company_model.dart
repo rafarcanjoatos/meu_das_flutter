@@ -1,4 +1,4 @@
-class CompanyModel {
+class UserModel {
   String? cnpj;
   String? razaoSocial;
   String? nomeFantasia;
@@ -11,7 +11,7 @@ class CompanyModel {
   String? situacao;
   String? dataSituacaoCadastral;
 
-  CompanyModel.fromJson(Map<String, dynamic> json) {
+  UserModel.fromJson(Map<String, dynamic> json) {
     cnpj = json["cnpj"];
     razaoSocial = json["razaoSocial"];
     nomeFantasia = json["nomeFantasia"];

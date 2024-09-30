@@ -1,0 +1,24 @@
+{
+    "notifications": [
+        {
+            "title": "Nova Mensagem",
+            "message": "Você recebeu uma nova mensagem de João.",
+            "timestamp": "2024-09-29T17:55:00Z"
+        },
+        {
+            "title": "Atualização Disponível",
+            "message": "Uma nova versão do aplicativo está disponível.",
+            "timestamp": "2024-09-29T22:55:00Z"
+        },
+        {
+            "title": "Lembrete",
+            "message": "Não esqueça da reunião amanhã às 10h.",
+            "timestamp": "2024-09-28T14:55:00Z"
+        },
+        {
+            "title": "Lembrete",
+            "message": "Faltam 5 dias para Emissão de sua DAS",
+            "timestamp": "2024-09-28T14:55:00Z"
+        }
+    ]
+}

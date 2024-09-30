@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
 
 class InputWidget extends StatefulWidget {
   final String hintText;
@@ -6,13 +7,20 @@ class InputWidget extends StatefulWidget {
   final bool obscure;
   final bool autoFocus;
   final TextEditingController controller;
-  const InputWidget(
-      {super.key,
-      required this.hintText,
-      required this.controller,
-      this.keyboardType = TextInputType.text,
-      this.obscure = false,
-      this.autoFocus = false});
+  final String title;
+  final bool readOnly;
+  final double padding;
+  const InputWidget({
+    super.key,
+    required this.hintText,
+    required this.controller,
+    this.keyboardType = TextInputType.text,
+    this.obscure = false,
+    this.autoFocus = false,
+    this.title = " ",
+    this.readOnly = false,
+    this.padding = 5.0,
+  });
 
   @override
   State<InputWidget> createState() => _InputWidgetState();
@@ -21,14 +29,33 @@ class InputWidget extends StatefulWidget {
 class _InputWidgetState extends State<InputWidget> {
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-          hintText: widget.hintText,
-          border: const OutlineInputBorder(borderRadius: BorderRadius.zero)),
-      controller: widget.controller,
-      keyboardType: widget.keyboardType,
-      obscureText: widget.obscure,
-      autofocus: widget.autoFocus,
+    return Column(
+      children: [
+        widget.title != " "
+            ? Align(
+                alignment: Alignment.centerLeft,
+                child: TextWidget.title2(
+                  text: widget.title,
+                ),
+              )
+            : const SizedBox.shrink(),
+        TextField(
+          readOnly: widget.readOnly,
+          decoration: InputDecoration(
+            hintText: widget.hintText,
+            border: const OutlineInputBorder(
+              borderRadius: BorderRadius.zero,
+            ),
+          ),
+          controller: widget.controller,
+          keyboardType: widget.keyboardType,
+          obscureText: widget.obscure,
+          autofocus: widget.autoFocus,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: widget.padding),
+        ),
+      ],
     );
   }
 }

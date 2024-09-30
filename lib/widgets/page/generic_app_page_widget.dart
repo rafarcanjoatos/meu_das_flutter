@@ -7,11 +7,17 @@ import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
 class GenericAppPageWidget extends StatefulWidget {
   final Widget body;
   final int pageIndex;
+  final double paddingBorder;
+  final double paddingCompanyHeader;
+  final bool companyHeader;
 
   const GenericAppPageWidget({
     super.key,
     required this.body,
-    required this.pageIndex,
+    this.pageIndex = 1,
+    this.paddingBorder = 30.0,
+    this.paddingCompanyHeader = 12,
+    this.companyHeader = true,
   });
 
   @override
@@ -26,19 +32,24 @@ class _GenericAppPageWidgetState extends State<GenericAppPageWidget> {
     return Scaffold(
       appBar: const AppBarWidget(),
       body: Padding(
-        padding: const EdgeInsets.all(30.0),
+        padding: EdgeInsets.all(widget.paddingBorder),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            FutureBuilder(
-              future: company.consumerApi(),
-              builder: (context, value) {
-                return TextWidget.description(
-                  text: value.data?.razaoSocial ?? "",
-                );
-              },
+            widget.companyHeader == true
+                ? FutureBuilder(
+                    future: company.consumerApi(),
+                    builder: (context, value) {
+                      return TextWidget.description(
+                        text: value.data?.razaoSocial ?? "",
+                      );
+                    },
+                  )
+                : const SizedBox.shrink(),
+            Padding(
+              padding:
+                  EdgeInsets.symmetric(vertical: widget.paddingCompanyHeader),
             ),
-            const Padding(padding: EdgeInsets.symmetric(vertical: 12)),
             Expanded(
               child: SizedBox(
                 width: double.infinity,

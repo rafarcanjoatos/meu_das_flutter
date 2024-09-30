@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meu_das_flutter/utils/app_colors.dart';
 import 'package:meu_das_flutter/utils/app_strings.dart';
 import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
 
@@ -19,7 +20,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: const Color.fromARGB(255, 179, 179, 179).withOpacity(0.7),
+            color: AppColors.black.withOpacity(0.2),
             width: 1,
           ),
         ),
