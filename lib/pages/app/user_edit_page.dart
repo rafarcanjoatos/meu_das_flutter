@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meu_das_flutter/pages/app/user_info_page.dart';
 import 'package:meu_das_flutter/services/user_service.dart';
 import 'package:meu_das_flutter/utils/app_strings.dart';
 import 'package:meu_das_flutter/utils/navigator_utils.dart';
@@ -57,11 +58,13 @@ class _UserEditPageState extends State<UserEditPage> {
                 ),
                 ButtonWidget(
                   onPressed: () => NavigatorUtils.navigatorScreen(
-                      context,
-                      const DialogModal(
-                        title: AppStrings.modalSaveEdition,
-                        description: AppStrings.modalAreYouSure,
-                      )),
+                    context,
+                    const DialogModal(
+                      title: AppStrings.modalSaveEdition,
+                      description: AppStrings.modalAreYouSure,
+                      page: UserInfoPage(),
+                    ),
+                  ),
                   buttonText: AppStrings.buttonSave,
                 ),
               ],

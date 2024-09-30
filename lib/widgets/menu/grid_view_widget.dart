@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:meu_das_flutter/pages/app/company_info_page.dart';
+import 'package:meu_das_flutter/pages/app/das_page.dart';
 import 'package:meu_das_flutter/pages/app/dashboard_page.dart';
 import 'package:meu_das_flutter/pages/app/home_page.dart';
-import 'package:meu_das_flutter/pages/app/notifications_page.dart';
 import 'package:meu_das_flutter/pages/app/user_info_page.dart';
 import 'package:meu_das_flutter/utils/app_strings.dart';
 import 'package:meu_das_flutter/widgets/utils/item_menu_widget.dart';
@@ -25,7 +25,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
               child: ItemMenuWidget(
                 icon: Icons.description,
                 title: AppStrings.menuTitles["menu_1"] ?? "",
-                page: const HomePage(),
+                page: const DasPage(),
               ),
             ),
           ],
@@ -61,7 +61,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
               ItemMenuWidget(
                 icon: Icons.folder_open,
                 title: AppStrings.menuTitles["menu_5"] ?? "",
-                page: NotificationsPage(),
+                page: const HomePage(),
               ),
             ],
           ),

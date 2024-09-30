@@ -16,6 +16,7 @@ class AppStrings {
   static const String buttonSave = "Salvar";
   static const String buttonClose = "Fechar";
   static const String buttonCancel = "Cancelar";
+  static const String buttonDasGenerate = "Gerar DAS";
 
   static const String linkForgotMyPassword = "Esqueci Minha Senha";
 
@@ -31,7 +32,12 @@ class AppStrings {
   static const String email = "E-mail";
   static const String telephone = "Telefone";
 
+  static const String dasMoneyBilling = "Faturamento";
+  static const String dasMonth = "Mês de Apuração";
+  static const String dasSelectTheMonth = "Selecione o Mês";
+
   static const String modalSaveEdition = "Salvar Edição";
+  static const String modalConfirmDasGeneration = "Salvar Edição";
   static const String modalAreYouSure =
       "Tem certeza que gostaria de salvar estas informações?";
 
@@ -41,5 +47,20 @@ class AppStrings {
     "menu_3": "Dados Empresa",
     "menu_4": "Dashboard",
     "menu_5": "Histórico DAS",
+  };
+
+  static const Map<String, String> yearMonths = {
+    "january": "Janeiro",
+    "february": "Fevereiro",
+    "march": "Março",
+    "april": "Abril",
+    "may": "Maio",
+    "june": "Junho",
+    "july": "Julho",
+    "august": "Agosto",
+    "september": "Setembro",
+    "october": "Outubro",
+    "november": "Novembro",
+    "december": "Dezembro",
   };
 }

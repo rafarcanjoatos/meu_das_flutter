@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:meu_das_flutter/pages/app/user_info_page.dart';
 import 'package:meu_das_flutter/utils/app_strings.dart';
 import 'package:meu_das_flutter/utils/navigator_utils.dart';
 import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
@@ -7,10 +6,12 @@ import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
 class DialogModal extends StatefulWidget {
   final String title;
   final String description;
+  final Widget page;
   const DialogModal({
     super.key,
     required this.title,
     required this.description,
+    required this.page,
   });
 
   @override
@@ -34,7 +35,7 @@ class _DialogModalState extends State<DialogModal> {
           onPressed: () {
             NavigatorUtils.navigatorScreen(
               context,
-              const UserInfoPage(),
+              widget.page,
             );
           },
           child: TextWidget.description(text: AppStrings.buttonSave),
