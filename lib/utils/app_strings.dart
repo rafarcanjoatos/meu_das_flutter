@@ -25,8 +25,8 @@ class AppStrings {
   static const Map<String, String> menuTitles = {
     "menu_1": "Gerar DAS",
     "menu_2": "Meus Dados",
-    "menu_3": "Histórico DAS",
+    "menu_3": "Dados Empresa",
     "menu_4": "Dashboard",
-    "menu_5": "Notificações",
+    "menu_5": "Histórico DAS",
   };
 }

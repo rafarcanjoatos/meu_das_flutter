@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meu_das_flutter/pages/app/company_info_page.dart';
 import 'package:meu_das_flutter/pages/app/dashboard_page.dart';
 import 'package:meu_das_flutter/pages/app/home_page.dart';
 import 'package:meu_das_flutter/pages/app/notifications_page.dart';
@@ -23,7 +24,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
               child: ItemMenuWidget(
                 icon: Icons.description,
                 title: AppStrings.menuTitles["menu_1"] ?? "",
-                page: HomePage(),
+                page: const HomePage(),
               ),
             ),
           ],
@@ -44,12 +45,12 @@ class _GridViewWidgetState extends State<GridViewWidget> {
               ItemMenuWidget(
                 icon: Icons.person,
                 title: AppStrings.menuTitles["menu_2"] ?? "",
-                page: HomePage(),
+                page: const HomePage(),
               ),
               ItemMenuWidget(
-                icon: Icons.folder_open,
+                icon: Icons.apartment,
                 title: AppStrings.menuTitles["menu_3"] ?? "",
-                page: HomePage(),
+                page: const CompanyInfoPage(),
               ),
               ItemMenuWidget(
                 icon: Icons.bar_chart,
@@ -57,7 +58,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
                 page: DasboardPage(),
               ),
               ItemMenuWidget(
-                icon: Icons.notifications,
+                icon: Icons.folder_open,
                 title: AppStrings.menuTitles["menu_5"] ?? "",
                 page: NotificationsPage(),
               ),

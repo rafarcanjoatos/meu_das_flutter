@@ -3,7 +3,7 @@ import 'package:meu_das_flutter/widgets/page/generic_app_page_widget.dart';
 import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
 
 class DasboardPage extends StatefulWidget {
-  DasboardPage({super.key});
+  const DasboardPage({super.key});
 
   @override
   State<DasboardPage> createState() => _DasboardPageState();

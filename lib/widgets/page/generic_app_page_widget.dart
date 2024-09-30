@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:meu_das_flutter/services/company_service.dart';
 import 'package:meu_das_flutter/widgets/bar/app_bar_widget.dart';
 import 'package:meu_das_flutter/widgets/bar/bottom_navigation_bar_widget.dart';
 import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
 
 class GenericAppPageWidget extends StatefulWidget {
-  Widget body;
-  int pageIndex;
-  GenericAppPageWidget({
+  final Widget body;
+  final int pageIndex;
+
+  const GenericAppPageWidget({
     super.key,
     required this.body,
     required this.pageIndex,
@@ -17,6 +19,8 @@ class GenericAppPageWidget extends StatefulWidget {
 }
 
 class _GenericAppPageWidgetState extends State<GenericAppPageWidget> {
+  CompanyService company = CompanyService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,8 +30,15 @@ class _GenericAppPageWidgetState extends State<GenericAppPageWidget> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextWidget.description(text: "XYZ Company"),
-            const Padding(padding: EdgeInsets.symmetric(vertical: 20)),
+            FutureBuilder(
+              future: company.consumerApi(),
+              builder: (context, value) {
+                return TextWidget.description(
+                  text: value.data?.razaoSocial ?? "",
+                );
+              },
+            ),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 12)),
             Expanded(
               child: SizedBox(
                 width: double.infinity,

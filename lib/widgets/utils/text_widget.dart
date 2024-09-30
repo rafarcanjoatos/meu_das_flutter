@@ -24,6 +24,15 @@ class TextWidget extends StatefulWidget {
           color: AppColors.purple,
         );
 
+  TextWidget.title2({
+    super.key,
+    required this.text,
+  }) : style = GoogleFonts.ubuntu(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: AppColors.purple,
+        );
+
   TextWidget.link({
     super.key,
     required this.text,
