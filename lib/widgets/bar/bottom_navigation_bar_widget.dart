@@ -40,7 +40,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
       case 0:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const DasboardPage()),
+          MaterialPageRoute(builder: (context) => const DashboardPage()),
         );
         break;
       case 1:

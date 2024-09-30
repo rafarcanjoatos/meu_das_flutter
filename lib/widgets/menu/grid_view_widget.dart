@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meu_das_flutter/pages/app/company_info_page.dart';
+import 'package:meu_das_flutter/pages/app/das_history_page.dart';
 import 'package:meu_das_flutter/pages/app/das_page.dart';
 import 'package:meu_das_flutter/pages/app/dashboard_page.dart';
 import 'package:meu_das_flutter/pages/app/home_page.dart';
@@ -56,12 +57,12 @@ class _GridViewWidgetState extends State<GridViewWidget> {
               ItemMenuWidget(
                 icon: Icons.bar_chart,
                 title: AppStrings.menuTitles["menu_4"] ?? "",
-                page: const DasboardPage(),
+                page: const DashboardPage(),
               ),
               ItemMenuWidget(
                 icon: Icons.folder_open,
                 title: AppStrings.menuTitles["menu_5"] ?? "",
-                page: const HomePage(),
+                page: const DasHistoryPage(),
               ),
             ],
           ),

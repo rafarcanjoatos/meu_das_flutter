@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:meu_das_flutter/widgets/page/generic_app_page_widget.dart';
 import 'package:meu_das_flutter/widgets/utils/table_das_histories.dart';
 
-class DashboardPage extends StatefulWidget {
-  const DashboardPage({super.key});
+class DasHistoryPage extends StatefulWidget {
+  const DasHistoryPage({super.key});
 
   @override
-  State<DashboardPage> createState() => _DashboardPageState();
+  State<DasHistoryPage> createState() => _DasHistoryPageState();
 }
 
-class _DashboardPageState extends State<DashboardPage> {
+class _DasHistoryPageState extends State<DasHistoryPage> {
   @override
   Widget build(BuildContext context) {
     return const GenericAppPageWidget(
       body: TableDasHistories(),
-      pageIndex: 0,
+      pageIndex: 1,
       paddingBorder: 0,
       companyHeader: false,
     );
