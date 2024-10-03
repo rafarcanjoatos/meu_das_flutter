@@ -28,7 +28,7 @@ class TextWidget extends StatefulWidget {
     super.key,
     required this.text,
   }) : style = GoogleFonts.ubuntu(
-          fontSize: 20,
+          fontSize: 18,
           fontWeight: FontWeight.bold,
           color: AppColors.purple,
         );

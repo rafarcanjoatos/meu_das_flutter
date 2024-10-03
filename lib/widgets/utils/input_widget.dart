@@ -6,14 +6,14 @@ class InputWidget extends StatefulWidget {
   final TextInputType keyboardType;
   final bool obscure;
   final bool autoFocus;
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final String title;
   final bool readOnly;
   final double padding;
   const InputWidget({
     super.key,
     required this.hintText,
-    required this.controller,
+    this.controller,
     this.keyboardType = TextInputType.text,
     this.obscure = false,
     this.autoFocus = false,
@@ -42,6 +42,7 @@ class _InputWidgetState extends State<InputWidget> {
         TextField(
           readOnly: widget.readOnly,
           decoration: InputDecoration(
+            filled: widget.readOnly,
             hintText: widget.hintText,
             border: const OutlineInputBorder(
               borderRadius: BorderRadius.zero,

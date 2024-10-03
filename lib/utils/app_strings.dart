@@ -33,6 +33,7 @@ class AppStrings {
   static const String telephone = "Telefone";
 
   static const String dasMoneyBilling = "Faturamento";
+  static const String dasMoneyBillingHintText = "R\$0";
   static const String dasMonth = "Mês de Apuração";
   static const String dasSelectTheMonth = "Selecione o Mês";
 

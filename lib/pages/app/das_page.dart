@@ -24,9 +24,10 @@ class _DasPageState extends State<DasPage> {
       body: Column(
         children: [
           InputWidget(
-            hintText: AppStrings.dasMoneyBilling,
-            controller: controller,
             title: AppStrings.dasMoneyBilling,
+            hintText: AppStrings.dasMoneyBillingHintText,
+            controller: controller,
+            keyboardType: TextInputType.number,
           ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 10),
@@ -38,14 +39,18 @@ class _DasPageState extends State<DasPage> {
             padding: EdgeInsets.symmetric(vertical: 20),
           ),
           ButtonWidget(
-            onPressed: () => NavigatorUtils.navigatorScreen(
-              context,
-              const DialogModal(
-                title: AppStrings.modalConfirmDasGeneration,
-                description: AppStrings.modalAreYouSure,
-                page: HomePage(),
-              ),
-            ),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return const DialogModal(
+                    title: AppStrings.modalConfirmDasGeneration,
+                    description: AppStrings.modalAreYouSure,
+                    page: HomePage(),
+                  );
+                },
+              );
+            },
             buttonText: AppStrings.buttonDasGenerate,
           )
         ],

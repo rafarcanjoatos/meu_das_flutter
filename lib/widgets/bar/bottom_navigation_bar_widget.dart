@@ -3,14 +3,17 @@ import 'package:meu_das_flutter/pages/app/dashboard_page.dart';
 import 'package:meu_das_flutter/pages/app/home_page.dart';
 import 'package:meu_das_flutter/pages/app/notifications_page.dart';
 import 'package:meu_das_flutter/services/notification_service.dart';
+import 'package:meu_das_flutter/utils/app_colors.dart';
 import 'package:meu_das_flutter/utils/app_strings.dart';
 
 // ignore: must_be_immutable
 class BottomNavigationBarWidget extends StatefulWidget {
   int currentPageIndex;
+  bool hasOverlay;
   BottomNavigationBarWidget({
     super.key,
     this.currentPageIndex = 1,
+    this.hasOverlay = false,
   });
 
   @override
@@ -71,6 +74,9 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
         }
       },
       selectedIndex: widget.currentPageIndex,
+      indicatorColor: widget.hasOverlay
+          ? AppColors.purple.withOpacity(0.1)
+          : Colors.transparent,
       destinations: <Widget>[
         const NavigationDestination(
           icon: Icon(Icons.signal_cellular_alt),

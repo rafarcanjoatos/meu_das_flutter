@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meu_das_flutter/models/das_history_model.dart';
 import 'package:meu_das_flutter/services/das_history_service.dart';
+import 'package:meu_das_flutter/utils/date_format_utils.dart';
 
 class TableDasHistories extends StatefulWidget {
   const TableDasHistories({super.key});
@@ -25,28 +26,51 @@ class _TableDasHistoriesState extends State<TableDasHistories> {
               child: DataTable(
                 columnSpacing: 15,
                 columns: const [
-                  DataColumn(label: Text('Mês')),
-                  DataColumn(label: Text('Valor')),
-                  DataColumn(label: Text('Emissão')),
-                  DataColumn(label: Text('Vencimento')),
-                  DataColumn(label: Text('Status')),
+                  DataColumn(
+                    label: Text('Mês'),
+                  ),
+                  DataColumn(
+                    label: Text('Valor'),
+                  ),
+                  DataColumn(
+                    label: Text('Emissão'),
+                  ),
+                  DataColumn(
+                    label: Text('Vencimento'),
+                  ),
+                  DataColumn(
+                    label: Text('Status'),
+                  ),
                 ],
                 rows: dasHistories.map((item) {
-                  return DataRow(cells: [
-                    DataCell(Text(item.month.toString())),
-                    DataCell(Text(item.value.toString())),
-                    DataCell(
-                      Text(
-                        '${DateTime.parse(item.issueDate!).hour}:${DateTime.parse(item.issueDate!).minute}',
+                  return DataRow(
+                    cells: [
+                      DataCell(
+                        Text(item.month.toString()),
                       ),
-                    ),
-                    DataCell(
-                      Text(
-                        '${DateTime.parse(item.dueDate!).hour}:${DateTime.parse(item.dueDate!).minute}',
+                      DataCell(
+                        Text(item.value.toString()),
                       ),
-                    ),
-                    DataCell(Text(item.status.toString())),
-                  ]);
+                      DataCell(
+                        Text(
+                          DateFormatUtils.formatDate(
+                            DateTime.parse(item.issueDate!),
+                          ),
+                        ),
+                      ),
+                      DataCell(
+                        Text(
+                          textAlign: TextAlign.center,
+                          DateFormatUtils.formatDate(
+                            DateTime.parse(item.dueDate!),
+                          ),
+                        ),
+                      ),
+                      DataCell(
+                        Text(item.status.toString()),
+                      ),
+                    ],
+                  );
                 }).toList(),
               ),
             ),

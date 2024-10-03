@@ -17,6 +17,7 @@ class _DashboardPageState extends State<DashboardPage> {
       pageIndex: 0,
       paddingBorder: 0,
       companyHeader: false,
+      hasOverlay: true,
     );
   }
 }

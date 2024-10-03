@@ -24,6 +24,8 @@ class _NotificationsPageState extends State<NotificationsPage> {
           final notifications = notification.data!;
 
           return ListView.builder(
+            physics: const BouncingScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics()),
             itemCount: notifications.length,
             itemBuilder: (context, index) {
               final notification = notifications[index];
@@ -45,6 +47,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
       paddingBorder: 0,
       paddingCompanyHeader: 0,
       companyHeader: false,
+      hasOverlay: true,
     );
   }
 }

@@ -15,6 +15,7 @@ class _HomePageState extends State<HomePage> {
     return const GenericAppPageWidget(
       body: GridViewWidget(),
       pageIndex: 1,
+      hasOverlay: true,
     );
   }
 }

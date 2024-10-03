@@ -10,6 +10,7 @@ class GenericAppPageWidget extends StatefulWidget {
   final double paddingBorder;
   final double paddingCompanyHeader;
   final bool companyHeader;
+  final bool hasOverlay;
 
   const GenericAppPageWidget({
     super.key,
@@ -18,6 +19,7 @@ class GenericAppPageWidget extends StatefulWidget {
     this.paddingBorder = 30.0,
     this.paddingCompanyHeader = 12,
     this.companyHeader = true,
+    this.hasOverlay = false,
   });
 
   @override
@@ -26,6 +28,15 @@ class GenericAppPageWidget extends StatefulWidget {
 
 class _GenericAppPageWidgetState extends State<GenericAppPageWidget> {
   CompanyService company = CompanyService();
+
+  // @override
+  // void initState() {
+  //   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+  //     statusBarColor: AppColors.purple,
+  //     statusBarIconBrightness: Brightness.light,
+  //   ));
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -61,8 +72,10 @@ class _GenericAppPageWidgetState extends State<GenericAppPageWidget> {
           ],
         ),
       ),
-      bottomNavigationBar:
-          BottomNavigationBarWidget(currentPageIndex: widget.pageIndex),
+      bottomNavigationBar: BottomNavigationBarWidget(
+        currentPageIndex: widget.pageIndex,
+        hasOverlay: widget.hasOverlay,
+      ),
     );
   }
 }
