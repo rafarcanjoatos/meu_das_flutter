@@ -21,7 +21,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
       body: FutureBuilder<List<NotificationModel>?>(
         future: notifications.consumerApi(),
         builder: (context, notification) {
-          final notifications = notification.data!;
+          final notifications = notification.data ?? [];
 
           return ListView.builder(
             physics: const BouncingScrollPhysics(

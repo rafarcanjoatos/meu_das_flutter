@@ -18,7 +18,7 @@ class _TableDasHistoriesState extends State<TableDasHistories> {
     return FutureBuilder<List<DasHistoryModel>?>(
       future: dasHistory.consumerApi(),
       builder: (context, snapshot) {
-        final dasHistories = snapshot.data!;
+        final dasHistories = snapshot.data ?? [];
 
         return Column(
           children: [

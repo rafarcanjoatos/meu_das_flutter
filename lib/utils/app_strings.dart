@@ -64,4 +64,10 @@ class AppStrings {
     "november": "Novembro",
     "december": "Dezembro",
   };
+
+  static const String cpfInvalid = "CPF Inválido";
+  static const String passwordInvalid = "Senha Inválido";
+  static const String passwordInvalidCharacters =
+      "Senha deve ter no mínimo 8 caracteres";
+  static const String loginInvalid = "Login Inválido";
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:meu_das_flutter/utils/app_colors.dart';
+import 'package:meu_das_flutter/utils/app_strings.dart';
+import 'package:meu_das_flutter/utils/validate_utils.dart';
 import 'package:meu_das_flutter/widgets/utils/button_widget.dart';
 import 'package:meu_das_flutter/widgets/utils/input_widget.dart';
 import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
@@ -8,7 +11,7 @@ class GenericInfoPageWidget extends StatefulWidget {
   final IconData icon;
   final String title;
   final String description;
-  final TextEditingController? controller;
+  final MaskedTextController? controller;
   final String? hintText;
   final String buttonText;
   final void Function()? onPressed;
@@ -29,6 +32,8 @@ class GenericInfoPageWidget extends StatefulWidget {
 }
 
 class _GenericInfoPageWidgetState extends State<GenericInfoPageWidget> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,17 +60,26 @@ class _GenericInfoPageWidgetState extends State<GenericInfoPageWidget> {
                 ),
                 const Padding(padding: EdgeInsets.only(top: 50)),
                 if (widget.controller != null && widget.hintText != null) ...[
-                  InputWidget(
-                    controller: widget.controller!,
-                    hintText: widget.hintText!,
-                    autoFocus: true,
-                    keyboardType: TextInputType.number,
+                  Form(
+                    key: _formKey,
+                    child: InputWidget(
+                      controller: widget.controller!,
+                      hintText: widget.hintText!,
+                      autoFocus: true,
+                      keyboardType: TextInputType.number,
+                      maxLenght: 15,
+                      validation: (value) => _buildValidation(value),
+                    ),
                   ),
                   const Padding(padding: EdgeInsets.only(top: 50)),
                 ],
                 ButtonWidget(
                   buttonText: widget.buttonText,
-                  onPressed: widget.onPressed,
+                  onPressed: () {
+                    if (_formKey.currentState?.validate() ?? false) {
+                      widget.onPressed!();
+                    }
+                  },
                 ),
               ],
             ),
@@ -73,5 +87,17 @@ class _GenericInfoPageWidgetState extends State<GenericInfoPageWidget> {
         ),
       ),
     );
+  }
+
+  String? _buildValidation(String value) {
+    if (!ValidateUtils.isCPF(value)) {
+      return AppStrings.cpfInvalid;
+    }
+
+    if (!ValidateUtils.minLenght(value, 15)) {
+      return AppStrings.cpfInvalid;
+    }
+
+    return null;
   }
 }

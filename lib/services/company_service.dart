@@ -11,7 +11,7 @@ class CompanyService {
       Map<String, dynamic> responseMap = jsonDecode(jsonString);
       return UserModel.fromJson(responseMap);
     } catch (e) {
-      print("Erro ao carregar o arquivo JSON: $e");
+      //print("Erro ao carregar o arquivo JSON: $e");
       return null;
     }
   }

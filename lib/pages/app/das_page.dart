@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:meu_das_flutter/pages/app/home_page.dart';
 import 'package:meu_das_flutter/utils/app_strings.dart';
-import 'package:meu_das_flutter/utils/navigator_utils.dart';
 import 'package:meu_das_flutter/widgets/modal/dialog_modal.dart';
+import 'package:meu_das_flutter/widgets/page/das_model_page_widget.dart';
 import 'package:meu_das_flutter/widgets/page/generic_app_page_widget.dart';
 import 'package:meu_das_flutter/widgets/utils/button_widget.dart';
 import 'package:meu_das_flutter/widgets/utils/dropdown_month_widget.dart';
@@ -43,10 +43,10 @@ class _DasPageState extends State<DasPage> {
               showDialog(
                 context: context,
                 builder: (context) {
-                  return const DialogModal(
+                  return DialogModal(
                     title: AppStrings.modalConfirmDasGeneration,
                     description: AppStrings.modalAreYouSure,
-                    page: HomePage(),
+                    page: DasModelPageWidget(),
                   );
                 },
               );

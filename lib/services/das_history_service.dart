@@ -17,7 +17,7 @@ class DasHistoryService {
 
       return dasHistories;
     } catch (e) {
-      print("Erro ao carregar o arquivo JSON: $e");
+      //print("Erro ao carregar o arquivo JSON: $e");
       return null;
     }
   }

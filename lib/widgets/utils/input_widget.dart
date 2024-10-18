@@ -10,6 +10,8 @@ class InputWidget extends StatefulWidget {
   final String title;
   final bool readOnly;
   final double padding;
+  final int maxLenght;
+  final FormFieldValidator? validation;
   const InputWidget({
     super.key,
     required this.hintText,
@@ -20,6 +22,8 @@ class InputWidget extends StatefulWidget {
     this.title = " ",
     this.readOnly = false,
     this.padding = 5.0,
+    this.maxLenght = 20,
+    this.validation,
   });
 
   @override
@@ -39,11 +43,14 @@ class _InputWidgetState extends State<InputWidget> {
                 ),
               )
             : const SizedBox.shrink(),
-        TextField(
+        TextFormField(
           readOnly: widget.readOnly,
+          maxLength: widget.maxLenght,
+          validator: widget.validation,
           decoration: InputDecoration(
             filled: widget.readOnly,
             hintText: widget.hintText,
+            counterText: '',
             border: const OutlineInputBorder(
               borderRadius: BorderRadius.zero,
             ),

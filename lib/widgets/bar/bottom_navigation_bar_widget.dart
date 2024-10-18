@@ -78,18 +78,24 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
           ? AppColors.purple.withOpacity(0.1)
           : Colors.transparent,
       destinations: <Widget>[
-        const NavigationDestination(
-          icon: Icon(Icons.signal_cellular_alt),
+        NavigationDestination(
+          icon: widget.currentPageIndex == 0
+              ? const Icon(Icons.pie_chart_sharp)
+              : const Icon(Icons.pie_chart_outline),
           label: AppStrings.menuDashboard,
         ),
-        const NavigationDestination(
-          icon: Icon(Icons.home_outlined),
+        NavigationDestination(
+          icon: widget.currentPageIndex == 1
+              ? const Icon(Icons.home_sharp)
+              : const Icon(Icons.home_outlined),
           label: AppStrings.menuHome,
         ),
         NavigationDestination(
           icon: Badge(
             label: Text('$notificationCount'),
-            child: const Icon(Icons.notifications_sharp),
+            child: widget.currentPageIndex == 2
+                ? const Icon(Icons.notifications_sharp)
+                : const Icon(Icons.notifications_outlined),
           ),
           label: AppStrings.menuNotifications,
         ),

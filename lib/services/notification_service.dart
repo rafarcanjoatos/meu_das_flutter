@@ -17,7 +17,7 @@ class NotificationService {
 
       return notifications;
     } catch (e) {
-      print("Erro ao carregar o arquivo JSON: $e");
+      //print("Erro ao carregar o arquivo JSON: $e");
       return null;
     }
   }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:meu_das_flutter/pages/app/home_page.dart';
 import 'package:meu_das_flutter/pages/forgot_password/forgot_my_password_page.dart';
 import 'package:meu_das_flutter/utils/app_strings.dart';
 import 'package:meu_das_flutter/utils/navigator_utils.dart';
+import 'package:meu_das_flutter/utils/validate_utils.dart';
 import 'package:meu_das_flutter/widgets/utils/button_widget.dart';
 import 'package:meu_das_flutter/widgets/utils/input_widget.dart';
 import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
@@ -14,9 +16,11 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  TextEditingController controllerCpf = TextEditingController();
-  TextEditingController controllerPassword = TextEditingController();
+class _LoginPageState extends State<LoginPage> with ValidateUtils {
+  final MaskedTextController controllerCpf =
+      MaskedTextController(mask: '000.000.000-00');
+  final TextEditingController controllerPassword = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +39,7 @@ class _LoginPageState extends State<LoginPage> {
                   hintText: AppStrings.hintTextCpf,
                   autoFocus: true,
                   keyboardType: TextInputType.number,
+                  maxLenght: 15,
                 ),
                 const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
                 InputWidget(
@@ -42,6 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                   hintText: AppStrings.hintTextPassword,
                   keyboardType: TextInputType.visiblePassword,
                   obscure: true,
+                  maxLenght: 20,
                 ),
                 const Padding(padding: EdgeInsets.only(top: 10)),
                 Align(
@@ -57,8 +63,13 @@ class _LoginPageState extends State<LoginPage> {
                     )),
                 const Padding(padding: EdgeInsets.only(top: 50)),
                 ButtonWidget(
+                  // Desligado para teste, Validação do login
+                  // onPressed: () => ValidateUtils.login(context, controllerCpf,
+                  //     controllerPassword, const HomePage()),
+                  // buttonText: AppStrings.buttonLogin,
+
                   onPressed: () =>
-                      NavigatorUtils.navigatorScreen(context, HomePage()),
+                      NavigatorUtils.navigatorScreen(context, const HomePage()),
                   buttonText: AppStrings.buttonLogin,
                 )
               ],
