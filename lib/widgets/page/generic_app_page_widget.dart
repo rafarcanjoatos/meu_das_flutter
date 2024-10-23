@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meu_das_flutter/services/company_service.dart';
+import 'package:meu_das_flutter/utils/app_colors.dart';
 import 'package:meu_das_flutter/widgets/bar/app_bar_widget.dart';
 import 'package:meu_das_flutter/widgets/bar/bottom_navigation_bar_widget.dart';
 import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
@@ -10,6 +11,7 @@ class GenericAppPageWidget extends StatefulWidget {
   final double paddingBorder;
   final double paddingCompanyHeader;
   final bool companyHeader;
+  final String? title;
   final bool hasOverlay;
   final Widget? page;
   final bool hasLeading;
@@ -21,6 +23,7 @@ class GenericAppPageWidget extends StatefulWidget {
     this.paddingBorder = 30.0,
     this.paddingCompanyHeader = 12,
     this.companyHeader = true,
+    this.title = " ",
     this.hasOverlay = false,
     this.hasLeading = true,
     this.page,
@@ -58,6 +61,19 @@ class _GenericAppPageWidgetState extends State<GenericAppPageWidget> {
             Padding(
               padding:
                   EdgeInsets.symmetric(vertical: widget.paddingCompanyHeader),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: widget.title != " "
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
+                      child: TextWidget.title2(
+                        text: widget.title!,
+                        color: AppColors.black,
+                      ),
+                    )
+                  : const SizedBox.shrink(),
             ),
             Expanded(
               child: SizedBox(

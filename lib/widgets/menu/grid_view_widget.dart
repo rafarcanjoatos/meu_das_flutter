@@ -24,7 +24,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
             Expanded(
               child: ItemMenuWidget(
                 icon: Icons.description,
-                title: AppStrings.menuTitles["menu_1"] ?? "",
+                title: AppStrings.menuTitles["generateDas"] ?? "",
                 page: const DasPage(),
               ),
             ),
@@ -45,22 +45,22 @@ class _GridViewWidgetState extends State<GridViewWidget> {
             children: [
               ItemMenuWidget(
                 icon: Icons.person,
-                title: AppStrings.menuTitles["menu_2"] ?? "",
+                title: AppStrings.menuTitles["myData"] ?? "",
                 page: const UserInfoPage(),
               ),
               ItemMenuWidget(
                 icon: Icons.apartment,
-                title: AppStrings.menuTitles["menu_3"] ?? "",
+                title: AppStrings.menuTitles["companyData"] ?? "",
                 page: const CompanyInfoPage(),
               ),
               ItemMenuWidget(
                 icon: Icons.bar_chart,
-                title: AppStrings.menuTitles["menu_4"] ?? "",
+                title: AppStrings.menuTitles["dashboard"] ?? "",
                 page: const DashboardPage(),
               ),
               ItemMenuWidget(
                 icon: Icons.folder_open,
-                title: AppStrings.menuTitles["menu_5"] ?? "",
+                title: AppStrings.menuTitles["dasHistory"] ?? "",
                 page: const DasHistoryPage(),
               ),
             ],

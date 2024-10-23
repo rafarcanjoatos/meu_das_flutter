@@ -5,58 +5,75 @@ import 'package:meu_das_flutter/utils/app_colors.dart';
 class TextWidget extends StatefulWidget {
   final String text;
   final TextStyle style;
+  final MaterialColor color;
 
   TextWidget.description({
     super.key,
     required this.text,
+    this.color = AppColors.black,
   }) : style = GoogleFonts.ubuntu(
           fontSize: 17,
           fontWeight: FontWeight.normal,
-          color: AppColors.black,
+          color: color,
         );
 
   TextWidget.title({
     super.key,
     required this.text,
+    this.color = AppColors.purple,
   }) : style = GoogleFonts.ubuntu(
           fontSize: 25,
           fontWeight: FontWeight.bold,
-          color: AppColors.purple,
+          color: color,
         );
 
   TextWidget.title2({
     super.key,
     required this.text,
+    this.color = AppColors.purple,
   }) : style = GoogleFonts.ubuntu(
           fontSize: 18,
           fontWeight: FontWeight.bold,
-          color: AppColors.purple,
+          color: color,
+        );
+
+  TextWidget.title3({
+    super.key,
+    required this.text,
+    this.color = AppColors.purple,
+  }) : style = GoogleFonts.ubuntu(
+          fontSize: 30,
+          fontWeight: FontWeight.bold,
+          color: color,
         );
 
   TextWidget.link({
     super.key,
     required this.text,
+    this.color = AppColors.purple,
   }) : style = GoogleFonts.ubuntu(
           fontWeight: FontWeight.w600,
-          color: AppColors.purple,
+          color: color,
         );
 
   TextWidget.logoBig({
     super.key,
     required this.text,
+    this.color = AppColors.purple,
   }) : style = GoogleFonts.ubuntu(
           fontWeight: FontWeight.bold,
           fontSize: 50,
-          color: AppColors.purple,
+          color: color,
         );
 
   TextWidget.logoSmall({
     super.key,
     required this.text,
+    this.color = AppColors.purple,
   }) : style = GoogleFonts.ubuntu(
           fontWeight: FontWeight.bold,
           fontSize: 40,
-          color: AppColors.purple,
+          color: color,
         );
 
   @override

@@ -43,11 +43,12 @@ class AppStrings {
       "Tem certeza que gostaria de salvar estas informações?";
 
   static const Map<String, String> menuTitles = {
-    "menu_1": "Gerar DAS",
-    "menu_2": "Meus Dados",
-    "menu_3": "Dados Empresa",
-    "menu_4": "Dashboard",
-    "menu_5": "Histórico DAS",
+    "generateDas": "Gerar DAS",
+    "myData": "Meus Dados",
+    "companyData": "Dados Empresa",
+    "dashboard": "Dashboard",
+    "dasHistory": "Histórico DAS",
+    "notification": "Notificações",
   };
 
   static const Map<String, String> yearMonths = {
@@ -70,5 +71,6 @@ class AppStrings {
   static const String passwordInvalidCharacters =
       "Senha deve ter no mínimo 8 caracteres";
   static const String loginInvalid = "Login Inválido";
-  static const String loadDataError = "Erro ao consultar informações do Usuário";
+  static const String loadDataError =
+      "Erro ao consultar informações do Usuário";
 }
