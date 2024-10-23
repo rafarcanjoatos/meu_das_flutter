@@ -3,6 +3,7 @@ import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:meu_das_flutter/pages/app/user_info_page.dart';
 import 'package:meu_das_flutter/services/user_service.dart';
 import 'package:meu_das_flutter/utils/app_strings.dart';
+import 'package:meu_das_flutter/utils/snackbar_utils.dart';
 import 'package:meu_das_flutter/widgets/modal/dialog_modal.dart';
 import 'package:meu_das_flutter/widgets/page/generic_app_page_widget.dart';
 import 'package:meu_das_flutter/widgets/utils/button_widget.dart';
@@ -28,52 +29,81 @@ class _UserEditPageState extends State<UserEditPage> {
       paddingCompanyHeader: 0,
       body: FutureBuilder(
         future: user.consumerApi(),
-        builder: (context, user) {
-          return Column(
-            children: [
-              InputWidget(
-                hintText: user.data?.cpf ?? "",
-                readOnly: true,
-                title: AppStrings.cpf,
-                keyboardType: TextInputType.none,
-              ),
-              InputWidget(
-                hintText: user.data?.fullName ?? "",
-                readOnly: true,
-                title: AppStrings.fullName,
-                keyboardType: TextInputType.none,
-              ),
-              InputWidget(
-                hintText: user.data?.email ?? "",
-                controller: controllerEmail,
-                autoFocus: true,
-                title: AppStrings.email,
-                keyboardType: TextInputType.emailAddress,
-              ),
-              InputWidget(
-                hintText: user.data?.telephone ?? "",
-                controller: controllerTelephone,
-                title: AppStrings.telephone,
-                keyboardType: TextInputType.phone,
-                padding: 10.0,
-              ),
-              ButtonWidget(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return const DialogModal(
-                        title: AppStrings.modalSaveEdition,
-                        description: AppStrings.modalAreYouSure,
-                        page: UserInfoPage(),
-                      );
-                    },
-                  );
-                },
-                buttonText: AppStrings.buttonSave,
-              ),
-            ],
-          );
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          if (snapshot.hasError) {
+            return Center(
+              child: SnackbarUtils.showErrorMessage(
+                  context, "Nenhum dado encontrado"),
+            );
+          }
+
+          if (snapshot.hasData) {
+            var userData = snapshot.data;
+
+            controllerEmail.text = userData?.email ?? "";
+            controllerTelephone.text = userData?.telephone ?? "";
+
+            return Column(
+              children: [
+                InputWidget(
+                  hintText: userData?.cpf ?? "",
+                  readOnly: true,
+                  title: AppStrings.cpf,
+                  keyboardType: TextInputType.none,
+                ),
+                InputWidget(
+                  hintText: userData?.fullName ?? "",
+                  readOnly: true,
+                  title: AppStrings.fullName,
+                  keyboardType: TextInputType.none,
+                ),
+                InputWidget(
+                  hintText: userData?.email ?? "",
+                  controller: controllerEmail,
+                  autoFocus: true,
+                  maxLenght: 50,
+                  title: AppStrings.email,
+                  keyboardType: TextInputType.emailAddress,
+                ),
+                InputWidget(
+                  hintText: userData?.telephone ?? "",
+                  controller: controllerTelephone,
+                  title: AppStrings.telephone,
+                  keyboardType: TextInputType.phone,
+                  padding: 10.0,
+                ),
+                ButtonWidget(
+                  onPressed: () async {
+                    await user.updateUser(
+                      controllerEmail.text,
+                      controllerTelephone.text,
+                    );
+
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return const DialogModal(
+                          title: AppStrings.modalSaveEdition,
+                          description: AppStrings.modalAreYouSure,
+                          page: UserInfoPage(),
+                        );
+                      },
+                    );
+                  },
+                  buttonText: AppStrings.buttonSave,
+                ),
+              ],
+            );
+          } else {
+            return Center(
+              child: SnackbarUtils.showErrorMessage(
+                  context, "Nenhum dado encontrado"),
+            );
+          }
         },
       ),
     );

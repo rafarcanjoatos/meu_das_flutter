@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 mixin SnackbarUtils {
-  static void showErrorMessage(
+  static showErrorMessage(
     BuildContext context,
     String message,
   ) {
