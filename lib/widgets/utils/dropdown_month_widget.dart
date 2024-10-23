@@ -32,6 +32,15 @@ class _DropdownMonthWidgetState extends State<DropdownMonthWidget> {
   String? selectedMonth;
 
   @override
+  void initState() {
+    super.initState();
+
+    DateTime now = DateTime.now();
+    int currentMonthIndex = now.month - 1;
+    selectedMonth = months[currentMonthIndex];
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -56,7 +65,7 @@ class _DropdownMonthWidgetState extends State<DropdownMonthWidget> {
           }).toList(),
           onChanged: (String? newValue) {
             setState(() {
-              selectedMonth = newValue;
+              selectedMonth = newValue; // Atualiza o mês selecionado
             });
           },
         ),

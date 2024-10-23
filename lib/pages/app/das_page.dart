@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meu_das_flutter/pages/app/home_page.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:meu_das_flutter/utils/app_strings.dart';
 import 'package:meu_das_flutter/widgets/modal/dialog_modal.dart';
 import 'package:meu_das_flutter/widgets/page/das_model_page_widget.dart';
@@ -16,7 +16,13 @@ class DasPage extends StatefulWidget {
 }
 
 class _DasPageState extends State<DasPage> {
-  TextEditingController controller = TextEditingController();
+  final MoneyMaskedTextController controllerMoneyBilling =
+      MoneyMaskedTextController(
+    initialValue: 0.0,
+    decimalSeparator: ',',
+    thousandSeparator: '.',
+    leftSymbol: 'R\$',
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +32,7 @@ class _DasPageState extends State<DasPage> {
           InputWidget(
             title: AppStrings.dasMoneyBilling,
             hintText: AppStrings.dasMoneyBillingHintText,
-            controller: controller,
+            controller: controllerMoneyBilling,
             keyboardType: TextInputType.number,
           ),
           const Padding(
@@ -43,7 +49,7 @@ class _DasPageState extends State<DasPage> {
               showDialog(
                 context: context,
                 builder: (context) {
-                  return DialogModal(
+                  return const DialogModal(
                     title: AppStrings.modalConfirmDasGeneration,
                     description: AppStrings.modalAreYouSure,
                     page: DasModelPageWidget(),

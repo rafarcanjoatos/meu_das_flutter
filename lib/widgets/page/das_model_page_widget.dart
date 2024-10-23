@@ -6,6 +6,8 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
 class DasModelPageWidget extends StatelessWidget {
+  const DasModelPageWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +19,7 @@ class DasModelPageWidget extends StatelessWidget {
             const DasHistoryPage(),
           ),
         ),
-        title: Text('Documento de Arrecadação do Simples Nacional'),
+        title: const Text('Documento de Arrecadação do Simples Nacional'),
         actions: [
           IconButton(
             icon: const Icon(Icons.picture_as_pdf),
@@ -31,35 +33,35 @@ class DasModelPageWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
+              const Center(
                 child: Text(
                   'Documento de Arrecadação do Simples Nacional',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
               ),
-              SizedBox(height: 20),
-              Text('CNPJ: 27.339.063/0001-23', style: TextStyle(fontSize: 16)),
-              Text('Número do Documento: 07.20.18310.6186667-1',
+              const SizedBox(height: 20),
+              const Text('CNPJ: 27.339.063/0001-23', style: TextStyle(fontSize: 16)),
+              const Text('Número do Documento: 07.20.18310.6186667-1',
                   style: TextStyle(fontSize: 16)),
-              Text('Data de Vencimento: 20/11/2018',
+              const Text('Data de Vencimento: 20/11/2018',
                   style: TextStyle(fontSize: 16)),
-              Text('Período de Apuração: Outubro/2018',
+              const Text('Período de Apuração: Outubro/2018',
                   style: TextStyle(fontSize: 16)),
-              Text('Valor Total do Documento: R\$ 2.000,00',
+              const Text('Valor Total do Documento: R\$ 2.000,00',
                   style: TextStyle(fontSize: 16)),
-              SizedBox(height: 20),
-              Text('Composição do Documento de Arrecadação',
+              const SizedBox(height: 20),
+              const Text('Composição do Documento de Arrecadação',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Table(
                 border: TableBorder.all(color: Colors.black),
-                columnWidths: {
-                  0: FlexColumnWidth(2),
-                  1: FlexColumnWidth(3),
-                  2: FlexColumnWidth(2),
-                  3: FlexColumnWidth(2),
-                  4: FlexColumnWidth(2),
+                columnWidths: const {
+                  0: const FlexColumnWidth(2),
+                  1: const FlexColumnWidth(3),
+                  2: const FlexColumnWidth(2),
+                  3: const FlexColumnWidth(2),
+                  4: const FlexColumnWidth(2),
                 },
                 children: [
                   TableRow(children: [
@@ -83,11 +85,11 @@ class DasModelPageWidget extends StatelessWidget {
                       'R\$ 680,00', 'R\$ 680,00', 'R\$ 680,00'),
                 ],
               ),
-              SizedBox(height: 20),
-              Text('Totais',
+              const SizedBox(height: 20),
+              const Text('Totais',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              SizedBox(height: 10),
-              Text('Valor Total: R\$ 2.000,00', style: TextStyle(fontSize: 16)),
+              const SizedBox(height: 10),
+              const Text('Valor Total: R\$ 2.000,00', style: TextStyle(fontSize: 16)),
             ],
           ),
         ),
@@ -137,15 +139,15 @@ class DasModelPageWidget extends StatelessWidget {
               ),
               pw.SizedBox(height: 20),
               pw.Text('CNPJ: 27.339.063/0001-23',
-                  style: pw.TextStyle(fontSize: 16)),
+                  style: const pw.TextStyle(fontSize: 16)),
               pw.Text('Número do Documento: 07.20.18310.6186667-1',
-                  style: pw.TextStyle(fontSize: 16)),
+                  style: const pw.TextStyle(fontSize: 16)),
               pw.Text('Data de Vencimento: 20/11/2018',
-                  style: pw.TextStyle(fontSize: 16)),
+                  style: const pw.TextStyle(fontSize: 16)),
               pw.Text('Período de Apuração: Outubro/2018',
-                  style: pw.TextStyle(fontSize: 16)),
+                  style: const pw.TextStyle(fontSize: 16)),
               pw.Text('Valor Total do Documento: R\$ 2.000,00',
-                  style: pw.TextStyle(fontSize: 16)),
+                  style: const pw.TextStyle(fontSize: 16)),
               pw.SizedBox(height: 20),
               pw.Text('Composição do Documento de Arrecadação',
                   style: pw.TextStyle(
@@ -210,7 +212,7 @@ class DasModelPageWidget extends StatelessWidget {
                       fontSize: 18, fontWeight: pw.FontWeight.bold)),
               pw.SizedBox(height: 10),
               pw.Text('Valor Total: R\$ 2.000,00',
-                  style: pw.TextStyle(fontSize: 16)),
+                  style: const pw.TextStyle(fontSize: 16)),
             ],
           );
         },

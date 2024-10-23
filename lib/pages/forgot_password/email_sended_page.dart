@@ -21,6 +21,7 @@ class _EmailSendedPageState extends State<EmailSendedPage> {
       title: AppStrings.titleVerifyYourEmail,
       description: AppStrings.descriptionVerifyYourEmail,
       buttonText: AppStrings.buttonLoginPage,
+      validation: true,
       onPressed: () =>
           NavigatorUtils.navigatorScreen(context, const LoginPage()),
     );

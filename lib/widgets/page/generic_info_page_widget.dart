@@ -14,6 +14,7 @@ class GenericInfoPageWidget extends StatefulWidget {
   final MaskedTextController? controller;
   final String? hintText;
   final String buttonText;
+  final bool validation;
   final void Function()? onPressed;
 
   const GenericInfoPageWidget({
@@ -24,6 +25,7 @@ class GenericInfoPageWidget extends StatefulWidget {
     this.controller,
     this.hintText,
     required this.buttonText,
+    this.validation = false,
     required this.onPressed,
   });
 
@@ -76,7 +78,10 @@ class _GenericInfoPageWidgetState extends State<GenericInfoPageWidget> {
                 ButtonWidget(
                   buttonText: widget.buttonText,
                   onPressed: () {
-                    if (_formKey.currentState?.validate() ?? false) {
+                    if (_formKey.currentState?.validate() ??
+                        false && widget.validation == false) {
+                      widget.onPressed!();
+                    } else if (widget.validation == true) {
                       widget.onPressed!();
                     }
                   },
@@ -94,7 +99,7 @@ class _GenericInfoPageWidgetState extends State<GenericInfoPageWidget> {
       return AppStrings.cpfInvalid;
     }
 
-    if (!ValidateUtils.minLenght(value, 15)) {
+    if (!ValidateUtils.minLenght(value, 14)) {
       return AppStrings.cpfInvalid;
     }
 

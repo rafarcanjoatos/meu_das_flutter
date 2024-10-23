@@ -70,4 +70,5 @@ class AppStrings {
   static const String passwordInvalidCharacters =
       "Senha deve ter no mínimo 8 caracteres";
   static const String loginInvalid = "Login Inválido";
+  static const String loadDataError = "Erro ao consultar informações do Usuário";
 }

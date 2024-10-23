@@ -64,13 +64,13 @@ class _LoginPageState extends State<LoginPage> with ValidateUtils {
                 const Padding(padding: EdgeInsets.only(top: 50)),
                 ButtonWidget(
                   // Desligado para teste, Validação do login
-                  // onPressed: () => ValidateUtils.login(context, controllerCpf,
-                  //     controllerPassword, const HomePage()),
-                  // buttonText: AppStrings.buttonLogin,
-
-                  onPressed: () =>
-                      NavigatorUtils.navigatorScreen(context, const HomePage()),
+                  onPressed: () => ValidateUtils.login(context, controllerCpf,
+                      controllerPassword, const HomePage()),
                   buttonText: AppStrings.buttonLogin,
+
+                  // onPressed: () =>
+                  //     NavigatorUtils.navigatorScreen(context, const HomePage()),
+                  // buttonText: AppStrings.buttonLogin,
                 )
               ],
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meu_das_flutter/utils/app_strings.dart';
 import 'package:meu_das_flutter/utils/navigator_utils.dart';
+import 'package:meu_das_flutter/utils/snackbar_utils.dart';
 
 mixin ValidateUtils {
   static void login(
@@ -10,17 +11,18 @@ mixin ValidateUtils {
     Widget page,
   ) {
     if (!minLenght(controllerLogin.value.text, 11)) {
-      showErrorMessage(context, AppStrings.cpfInvalid);
+      SnackbarUtils.showErrorMessage(context, AppStrings.cpfInvalid);
       return;
     }
 
     if (!isCPF(controllerLogin.value.text)) {
-      showErrorMessage(context, AppStrings.cpfInvalid);
+      SnackbarUtils.showErrorMessage(context, AppStrings.cpfInvalid);
       return;
     }
 
     if (!minLenght(controllerPassword.value.text, 8)) {
-      showErrorMessage(context, AppStrings.passwordInvalidCharacters);
+      SnackbarUtils.showErrorMessage(
+          context, AppStrings.passwordInvalidCharacters);
       return;
     }
 
@@ -28,7 +30,7 @@ mixin ValidateUtils {
         controllerPassword.value.text == "12345678") {
       return NavigatorUtils.navigatorScreen(context, page);
     } else {
-      showErrorMessage(context, AppStrings.loginInvalid);
+      SnackbarUtils.showErrorMessage(context, AppStrings.loginInvalid);
     }
   }
 
@@ -63,10 +65,5 @@ mixin ValidateUtils {
 
     // Verifica se os dígitos verificadores estão corretos
     return firstDigit == digits[9] && secondDigit == digits[10];
-  }
-
-  static void showErrorMessage(BuildContext context, String message) {
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(message)));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:meu_das_flutter/pages/app/user_info_page.dart';
 import 'package:meu_das_flutter/services/user_service.dart';
 import 'package:meu_das_flutter/utils/app_strings.dart';
@@ -16,7 +17,8 @@ class UserEditPage extends StatefulWidget {
 
 class _UserEditPageState extends State<UserEditPage> {
   TextEditingController controllerEmail = TextEditingController();
-  TextEditingController controllerTelephone = TextEditingController();
+  MaskedTextController controllerTelephone =
+      MaskedTextController(mask: '(00)0.0000-0000');
   UserService user = UserService();
 
   @override
