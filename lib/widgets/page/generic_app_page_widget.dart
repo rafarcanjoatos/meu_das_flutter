@@ -65,7 +65,7 @@ class _GenericAppPageWidgetState extends State<GenericAppPageWidget> {
               child: widget.title != " "
                   ? Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
+                          horizontal: 20, vertical: 30),
                       child: TextWidget.title2(
                         text: widget.title!,
                         color: AppColors.black,

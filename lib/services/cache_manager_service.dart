@@ -9,6 +9,8 @@ import 'package:path_provider/path_provider.dart';
 
 abstract class CacheManagerService {
   static Future<void> initializeData() async {
+    bool recreateDataForTests = true;
+
     Map<String, dynamic> companyData = {
       "cnpj": "56.443.512/0001-87",
       "razaoSocial": "Das Tecnologia LTDA",
@@ -25,9 +27,9 @@ abstract class CacheManagerService {
 
     Map<String, dynamic> userData = {
       "cpf": "187.745.160-60",
-      "nomeCompleto": "João da Silva",
+      "fullName": "João da Silva",
       "email": "joao.silva@gmail.com",
-      "telefone": "(47)9.9168-6307"
+      "telephone": "(47)9.9168-6307"
     };
 
     Map<String, dynamic> notificationData = {
@@ -88,22 +90,22 @@ abstract class CacheManagerService {
           File("${downloadDirectory.path}/notification.json");
       File dasHistoryFile = File("${downloadDirectory.path}/dasHistory.json");
 
-      if (!companyFile.existsSync() || companyFile.existsSync()) {
+      if (!companyFile.existsSync() || recreateDataForTests == true) {
         await companyFile.writeAsString(jsonEncode(companyData));
         companyFile.createSync();
       }
 
-      if (!userFile.existsSync() || userFile.existsSync()) {
+      if (!userFile.existsSync() || recreateDataForTests == true) {
         await userFile.writeAsString(jsonEncode(userData));
         userFile.createSync();
       }
 
-      if (!notificationFile.existsSync() || notificationFile.existsSync()) {
+      if (!notificationFile.existsSync() || recreateDataForTests == true) {
         await notificationFile.writeAsString(jsonEncode(notificationData));
         notificationFile.createSync();
       }
 
-      if (!dasHistoryFile.existsSync() || dasHistoryFile.existsSync()) {
+      if (!dasHistoryFile.existsSync() || recreateDataForTests == true) {
         await dasHistoryFile.writeAsString(jsonEncode(dasHistoryData));
         dasHistoryFile.createSync();
       }

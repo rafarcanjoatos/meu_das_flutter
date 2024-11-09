@@ -38,23 +38,25 @@ class _TableDasHistoriesState extends State<TableDasHistories> {
 
         return Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 30),
-              child: Container(
-                color: AppColors.neutralLight.withOpacity(0.3),
-                padding: const EdgeInsets.all(40.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextWidget.title2(text: "RBT 12"),
-                    TextWidget.title3(
-                      text: rbt12,
-                      color: AppColors.black,
+            widget.hasRbtContainer == true
+                ? Padding(
+                    padding: const EdgeInsets.only(bottom: 30),
+                    child: Container(
+                      color: AppColors.neutralLight.withOpacity(0.3),
+                      padding: const EdgeInsets.all(40.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextWidget.title2(text: "RBT 12"),
+                          TextWidget.title3(
+                            text: rbt12,
+                            color: AppColors.black,
+                          )
+                        ],
+                      ),
                     ),
-                  ],
-                ),
-              ),
-            ),
+                  )
+                : const SizedBox.shrink(),
             Center(
               child: DataTable(
                 columnSpacing: 15,

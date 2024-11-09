@@ -13,10 +13,14 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return const GenericAppPageWidget(
-      body: TableDasHistories(),
+      body: TableDasHistories(
+        hasRbtContainer: true,
+      ),
       pageIndex: 0,
       paddingBorder: 0,
       companyHeader: false,
+      title: "Dashboard",
+      paddingCompanyHeader: 0,
       hasOverlay: true,
     );
   }

@@ -19,6 +19,7 @@ class _DasHistoryPageState extends State<DasHistoryPage> {
       pageIndex: 1,
       paddingBorder: 0,
       companyHeader: false,
+      paddingCompanyHeader: 0,
       title: AppStrings.menuTitles["dasHistory"],
       page: const HomePage(),
     );

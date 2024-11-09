@@ -8,9 +8,9 @@ class UserModel {
 
   UserModel.fromJson(Map<String, dynamic> json) {
     cpf = json["cpf"];
-    fullName = json["nomeCompleto"];
+    fullName = json["fullName"];
     email = json["email"];
-    telephone = json["telefone"];
+    telephone = json["telephone"];
   }
 
   Map<String, dynamic> toJson() {
