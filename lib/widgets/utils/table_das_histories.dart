@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meu_das_flutter/models/das_history_model.dart';
-import 'package:meu_das_flutter/services/das_history_service.dart';
+import 'package:meu_das_flutter/services/cache_manager_service.dart';
 import 'package:meu_das_flutter/utils/app_colors.dart';
 import 'package:meu_das_flutter/utils/date_format_utils.dart';
 import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
@@ -17,15 +17,24 @@ class TableDasHistories extends StatefulWidget {
 }
 
 class _TableDasHistoriesState extends State<TableDasHistories> {
-  DasHistoryService dasHistory = DasHistoryService();
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<DasHistoryModel>?>(
-      future: dasHistory.consumerApi(),
-      builder: (context, value) {
-        final dasHistories = value.data ?? [];
+      future: CacheManagerService.getDasHistoryData(),
+      builder: (context, snapshot) {
+        final dasHistories = snapshot.data ?? [];
         final rbt12 = calculateRbt12(dasHistories);
+
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        if (dasHistories.isEmpty) {
+          return Center(
+            child: TextWidget.description(
+                text: "Nenhum registro de DAS encontrado"),
+          );
+        }
 
         return Column(
           children: [

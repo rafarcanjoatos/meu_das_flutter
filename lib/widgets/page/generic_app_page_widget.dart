@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meu_das_flutter/services/company_service.dart';
+import 'package:meu_das_flutter/services/cache_manager_service.dart';
 import 'package:meu_das_flutter/utils/app_colors.dart';
 import 'package:meu_das_flutter/widgets/bar/app_bar_widget.dart';
 import 'package:meu_das_flutter/widgets/bar/bottom_navigation_bar_widget.dart';
@@ -34,8 +34,6 @@ class GenericAppPageWidget extends StatefulWidget {
 }
 
 class _GenericAppPageWidgetState extends State<GenericAppPageWidget> {
-  CompanyService company = CompanyService();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +48,7 @@ class _GenericAppPageWidgetState extends State<GenericAppPageWidget> {
           children: [
             widget.companyHeader == true
                 ? FutureBuilder(
-                    future: company.consumerApi(),
+                    future: CacheManagerService.getCompanyData(),
                     builder: (context, value) {
                       return TextWidget.description(
                         text: value.data?.razaoSocial ?? "",

@@ -24,6 +24,8 @@ class _DasPageState extends State<DasPage> {
     leftSymbol: 'R\$',
   );
 
+  String? selectedMonth;
+
   @override
   Widget build(BuildContext context) {
     return GenericAppPageWidget(
@@ -38,8 +40,13 @@ class _DasPageState extends State<DasPage> {
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 10),
           ),
-          const DropdownMonthWidget(
+          DropdownMonthWidget(
             title: AppStrings.dasSelectTheMonth,
+            onMonthChanged: (newMonth) {
+              setState(() {
+                selectedMonth = newMonth;
+              });
+            },
           ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 20),
@@ -49,10 +56,13 @@ class _DasPageState extends State<DasPage> {
               showDialog(
                 context: context,
                 builder: (context) {
-                  return const DialogModal(
+                  return DialogModal(
                     title: AppStrings.modalConfirmDasGeneration,
                     description: AppStrings.modalAreYouSure,
-                    page: DasModelPageWidget(),
+                    page: DasModelPageWidget(
+                      moneyBilling: controllerMoneyBilling,
+                      selectedMonth: selectedMonth,
+                    ),
                   );
                 },
               );

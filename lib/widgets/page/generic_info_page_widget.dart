@@ -78,8 +78,7 @@ class _GenericInfoPageWidgetState extends State<GenericInfoPageWidget> {
                 ButtonWidget(
                   buttonText: widget.buttonText,
                   onPressed: () {
-                    if (_formKey.currentState?.validate() ??
-                        false && widget.validation == false) {
+                    if (_formKey.currentState?.validate() ?? false) {
                       widget.onPressed!();
                     } else if (widget.validation == true) {
                       widget.onPressed!();

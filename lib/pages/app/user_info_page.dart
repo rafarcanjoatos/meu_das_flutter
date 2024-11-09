@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meu_das_flutter/pages/app/user_edit_page.dart';
-import 'package:meu_das_flutter/services/user_service.dart';
+import 'package:meu_das_flutter/services/cache_manager_service.dart';
 import 'package:meu_das_flutter/utils/app_strings.dart';
 import 'package:meu_das_flutter/utils/navigator_utils.dart';
 import 'package:meu_das_flutter/widgets/page/generic_app_page_widget.dart';
@@ -16,13 +16,12 @@ class UserInfoPage extends StatefulWidget {
 
 class _UserInfoPageState extends State<UserInfoPage> {
   TextEditingController controller = TextEditingController();
-  UserService user = UserService();
 
   @override
   Widget build(BuildContext context) {
     return GenericAppPageWidget(
       body: FutureBuilder(
-        future: user.consumerApi(),
+        future: CacheManagerService.getUserData(),
         builder: (context, user) {
           return Column(
             children: [

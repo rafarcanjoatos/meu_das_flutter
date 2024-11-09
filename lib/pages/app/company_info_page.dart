@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meu_das_flutter/services/company_service.dart';
+import 'package:meu_das_flutter/services/cache_manager_service.dart';
 import 'package:meu_das_flutter/widgets/page/generic_app_page_widget.dart';
 import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
 
@@ -11,13 +11,11 @@ class CompanyInfoPage extends StatefulWidget {
 }
 
 class _CompanyInfoPageState extends State<CompanyInfoPage> {
-  CompanyService company = CompanyService();
-
   @override
   Widget build(BuildContext context) {
     return GenericAppPageWidget(
       body: FutureBuilder(
-        future: company.consumerApi(),
+        future: CacheManagerService.getCompanyData(),
         builder: (context, value) {
           final data = value.data;
           final identifiers = {

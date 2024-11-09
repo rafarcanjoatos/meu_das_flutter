@@ -4,9 +4,12 @@ import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
 
 class DropdownMonthWidget extends StatefulWidget {
   final String title;
+  final ValueChanged<String?> onMonthChanged;
+
   const DropdownMonthWidget({
     super.key,
     this.title = " ",
+    required this.onMonthChanged,
   });
 
   @override
@@ -65,7 +68,8 @@ class _DropdownMonthWidgetState extends State<DropdownMonthWidget> {
           }).toList(),
           onChanged: (String? newValue) {
             setState(() {
-              selectedMonth = newValue; // Atualiza o mês selecionado
+              selectedMonth = newValue;
+              widget.onMonthChanged(newValue);
             });
           },
         ),

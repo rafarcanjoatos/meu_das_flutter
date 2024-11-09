@@ -58,13 +58,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
-  assets:
-    - lib/fake_api/company.json
-    - lib/fake_api/user.json
-    - lib/fake_api/notification.json
-    - lib/fake_api/das_history.json
-
   uses-material-design: true
 
 

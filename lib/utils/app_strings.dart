@@ -73,4 +73,7 @@ class AppStrings {
   static const String loginInvalid = "Login Inválido";
   static const String loadDataError =
       "Erro ao consultar informações do Usuário";
+
+  static const String noNotification = "Não há notificações";
+  static const String deletedNotification = "Notificação excluída com sucesso";
 }

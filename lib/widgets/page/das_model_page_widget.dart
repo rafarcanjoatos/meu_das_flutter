@@ -1,15 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
+import 'package:intl/intl.dart';
 import 'package:meu_das_flutter/pages/app/das_history_page.dart';
+import 'package:meu_das_flutter/services/cache_manager_service.dart';
+import 'package:meu_das_flutter/utils/date_format_utils.dart';
 import 'package:meu_das_flutter/utils/navigator_utils.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
-class DasModelPageWidget extends StatelessWidget {
-  const DasModelPageWidget({super.key});
+class DasModelPageWidget extends StatefulWidget {
+  final MoneyMaskedTextController moneyBilling;
+  final String? selectedMonth;
+  const DasModelPageWidget({
+    super.key,
+    required this.moneyBilling,
+    required this.selectedMonth,
+  });
 
   @override
+  State<DasModelPageWidget> createState() => _DasModelPageWidgetState();
+}
+
+class _DasModelPageWidgetState extends State<DasModelPageWidget> {
+  @override
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+
+    String issueDate = DateFormat('yyyy-MM-dd').format(now);
+    String periodDate = DateFormat('MMM/yy').format(now);
+    String dueDate =
+        DateFormatUtils.formatDate(now.add(const Duration(days: 5)));
+    double tax = calculateTax(widget.moneyBilling);
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -23,7 +46,14 @@ class DasModelPageWidget extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.picture_as_pdf),
-            onPressed: () => _generatePdf(context),
+            onPressed: () => _generatePdf(
+              widget.moneyBilling,
+              tax,
+              dueDate,
+              periodDate,
+              issueDate,
+              context,
+            ),
           ),
         ],
       ),
@@ -41,15 +71,16 @@ class DasModelPageWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              const Text('CNPJ: 27.339.063/0001-23', style: TextStyle(fontSize: 16)),
+              const Text('CNPJ: 27.339.063/0001-23',
+                  style: TextStyle(fontSize: 16)),
               const Text('Número do Documento: 07.20.18310.6186667-1',
                   style: TextStyle(fontSize: 16)),
-              const Text('Data de Vencimento: 20/11/2018',
-                  style: TextStyle(fontSize: 16)),
-              const Text('Período de Apuração: Outubro/2018',
-                  style: TextStyle(fontSize: 16)),
-              const Text('Valor Total do Documento: R\$ 2.000,00',
-                  style: TextStyle(fontSize: 16)),
+              Text('Data de Vencimento: $dueDate',
+                  style: const TextStyle(fontSize: 16)),
+              Text('Período de Apuração: $periodDate',
+                  style: const TextStyle(fontSize: 16)),
+              Text('Valor Total do Documento: ${widget.moneyBilling.text}',
+                  style: const TextStyle(fontSize: 16)),
               const SizedBox(height: 20),
               const Text('Composição do Documento de Arrecadação',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
@@ -57,11 +88,11 @@ class DasModelPageWidget extends StatelessWidget {
               Table(
                 border: TableBorder.all(color: Colors.black),
                 columnWidths: const {
-                  0: const FlexColumnWidth(2),
-                  1: const FlexColumnWidth(3),
-                  2: const FlexColumnWidth(2),
-                  3: const FlexColumnWidth(2),
-                  4: const FlexColumnWidth(2),
+                  0: FlexColumnWidth(2),
+                  1: FlexColumnWidth(3),
+                  2: FlexColumnWidth(2),
+                  3: FlexColumnWidth(2),
+                  4: FlexColumnWidth(2),
                 },
                 children: [
                   TableRow(children: [
@@ -71,25 +102,22 @@ class DasModelPageWidget extends StatelessWidget {
                     _buildTableCell('Multa', isHeader: true),
                     _buildTableCell('Juros', isHeader: true),
                   ]),
-                  _buildTableRow('1001', 'IRPJ - SIMPLES NACIONAL',
-                      'R\$ 110,00', 'R\$ 110,00', 'R\$ 110,00'),
-                  _buildTableRow('1002', 'CSLL - SIMPLES NACIONAL', 'R\$ 70,00',
-                      'R\$ 70,00', 'R\$ 70,00'),
-                  _buildTableRow('1004', 'COFINS - SIMPLES NACIONAL',
-                      'R\$ 254,80', 'R\$ 254,80', 'R\$ 254,80'),
-                  _buildTableRow('1005', 'PIS - SIMPLES NACIONAL', 'R\$ 55,20',
-                      'R\$ 55,20', 'R\$ 55,20'),
-                  _buildTableRow('1006', 'INSS - SIMPLES NACIONAL',
-                      'R\$ 830,00', 'R\$ 830,00', 'R\$ 830,00'),
-                  _buildTableRow('1007', 'ICMS - SIMPLES NACIONAL',
-                      'R\$ 680,00', 'R\$ 680,00', 'R\$ 680,00'),
+                  _buildTableRow(
+                    '1001',
+                    'DAS - SIMPLES NACIONAL',
+                    // ignore: unnecessary_string_interpolations
+                    '${tax.toStringAsFixed(2)}',
+                    '0.0',
+                    '0.0',
+                  ),
                 ],
               ),
               const SizedBox(height: 20),
               const Text('Totais',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               const SizedBox(height: 10),
-              const Text('Valor Total: R\$ 2.000,00', style: TextStyle(fontSize: 16)),
+              Text('Valor Total: ${widget.moneyBilling.text}',
+                  style: const TextStyle(fontSize: 16)),
             ],
           ),
         ),
@@ -110,18 +138,25 @@ class DasModelPageWidget extends StatelessWidget {
     );
   }
 
-  TableRow _buildTableRow(String codigo, String denominacao, String total,
-      String multa, String juros) {
+  TableRow _buildTableRow(String code, String denomination, String total,
+      String fine, String taxes) {
     return TableRow(children: [
-      _buildTableCell(codigo),
-      _buildTableCell(denominacao),
+      _buildTableCell(code),
+      _buildTableCell(denomination),
       _buildTableCell(total),
-      _buildTableCell(multa),
-      _buildTableCell(juros),
+      _buildTableCell(fine),
+      _buildTableCell(taxes),
     ]);
   }
 
-  void _generatePdf(BuildContext context) async {
+  void _generatePdf(
+    MoneyMaskedTextController moneyBilling,
+    double tax,
+    String dueDate,
+    String periodDate,
+    String issueDate,
+    BuildContext context,
+  ) async {
     final pdf = pw.Document();
 
     pdf.addPage(
@@ -142,18 +177,18 @@ class DasModelPageWidget extends StatelessWidget {
                   style: const pw.TextStyle(fontSize: 16)),
               pw.Text('Número do Documento: 07.20.18310.6186667-1',
                   style: const pw.TextStyle(fontSize: 16)),
-              pw.Text('Data de Vencimento: 20/11/2018',
+              pw.Text('Data de Vencimento: $dueDate',
                   style: const pw.TextStyle(fontSize: 16)),
-              pw.Text('Período de Apuração: Outubro/2018',
+              pw.Text('Período de Apuração: $periodDate',
                   style: const pw.TextStyle(fontSize: 16)),
-              pw.Text('Valor Total do Documento: R\$ 2.000,00',
+              pw.Text('Valor Total do Documento: ${moneyBilling.text}',
                   style: const pw.TextStyle(fontSize: 16)),
               pw.SizedBox(height: 20),
               pw.Text('Composição do Documento de Arrecadação',
                   style: pw.TextStyle(
                       fontSize: 18, fontWeight: pw.FontWeight.bold)),
               pw.SizedBox(height: 10),
-              pw.Table.fromTextArray(
+              pw.TableHelper.fromTextArray(
                 headers: [
                   'Código Principal',
                   'Denominação',
@@ -165,44 +200,10 @@ class DasModelPageWidget extends StatelessWidget {
                   [
                     '1001',
                     'IRPJ - SIMPLES NACIONAL',
-                    'R\$ 110,00',
-                    'R\$ 110,00',
-                    'R\$ 110,00'
-                  ],
-                  [
-                    '1002',
-                    'CSLL - SIMPLES NACIONAL',
-                    'R\$ 70,00',
-                    'R\$ 70,00',
-                    'R\$ 70,00'
-                  ],
-                  [
-                    '1004',
-                    'COFINS - SIMPLES NACIONAL',
-                    'R\$ 254,80',
-                    'R\$ 254,80',
-                    'R\$ 254,80'
-                  ],
-                  [
-                    '1005',
-                    'PIS - SIMPLES NACIONAL',
-                    'R\$ 55,20',
-                    'R\$ 55,20',
-                    'R\$ 55,20'
-                  ],
-                  [
-                    '1006',
-                    'INSS - SIMPLES NACIONAL',
-                    'R\$ 830,00',
-                    'R\$ 830,00',
-                    'R\$ 830,00'
-                  ],
-                  [
-                    '1007',
-                    'ICMS - SIMPLES NACIONAL',
-                    'R\$ 680,00',
-                    'R\$ 680,00',
-                    'R\$ 680,00'
+                    // ignore: unnecessary_string_interpolations
+                    '${tax.toStringAsFixed(2)}',
+                    '0.0',
+                    '0.0'
                   ],
                 ],
               ),
@@ -211,7 +212,7 @@ class DasModelPageWidget extends StatelessWidget {
                   style: pw.TextStyle(
                       fontSize: 18, fontWeight: pw.FontWeight.bold)),
               pw.SizedBox(height: 10),
-              pw.Text('Valor Total: R\$ 2.000,00',
+              pw.Text('Valor Total: ${moneyBilling.text}',
                   style: const pw.TextStyle(fontSize: 16)),
             ],
           );
@@ -219,7 +220,31 @@ class DasModelPageWidget extends StatelessWidget {
       ),
     );
 
+    final Map<String, dynamic> newEntry = {
+      "cnpj": "27.339.063/0001-23",
+      "documentNumber": "07.20.18310.6186667-1",
+      "month": periodDate,
+      "value": moneyBilling.numberValue,
+      "issueDate": issueDate,
+      "dueDate": dueDate,
+      "status": "Gerado"
+    };
+
+    await CacheManagerService.insertDasHistoryData(newEntry);
+
     await Printing.layoutPdf(
         onLayout: (PdfPageFormat format) async => pdf.save());
+  }
+
+  double calculateTax(MoneyMaskedTextController moneyBilling) {
+    String value = moneyBilling.text;
+
+    double numericValue = double.parse(
+            value.replaceAll(RegExp(r'[R\$,.]'), '').replaceAll(' ', '')) /
+        100;
+
+    double interestRate = numericValue * 0.15;
+
+    return interestRate;
   }
 }

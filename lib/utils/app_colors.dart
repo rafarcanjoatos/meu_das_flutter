@@ -20,4 +20,5 @@ abstract class AppColors {
   static const MaterialColor black = MaterialColor(0xFF000000, _neutral);
   static const MaterialColor white = MaterialColor(0xFFFFFFFF, _neutral);
   static const MaterialColor neutralLight = MaterialColor(0xFFD2D3D6, _neutral);
+  static const MaterialColor red = MaterialColor(0xFFFF0000, _neutral);
 }

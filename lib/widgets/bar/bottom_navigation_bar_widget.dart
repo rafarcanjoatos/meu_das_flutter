@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meu_das_flutter/pages/app/dashboard_page.dart';
 import 'package:meu_das_flutter/pages/app/home_page.dart';
 import 'package:meu_das_flutter/pages/app/notifications_page.dart';
-import 'package:meu_das_flutter/services/notification_service.dart';
+import 'package:meu_das_flutter/services/cache_manager_service.dart';
 import 'package:meu_das_flutter/utils/app_colors.dart';
 import 'package:meu_das_flutter/utils/app_strings.dart';
 
@@ -22,7 +22,6 @@ class BottomNavigationBarWidget extends StatefulWidget {
 }
 
 class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
-  final NotificationService notificationService = NotificationService();
   int notificationCount = 0;
 
   @override
@@ -32,9 +31,10 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
   }
 
   Future<void> _fetchNotificationCount() async {
-    final notifications = await notificationService.consumerApi();
+    final notifications = await CacheManagerService.getNotificationData() ?? [];
+
     setState(() {
-      notificationCount = notifications?.length ?? 0;
+      notificationCount = notifications.length;
     });
   }
 

@@ -1,6 +1,8 @@
 import 'package:intl/intl.dart';
 
 class DasHistoryModel {
+  String? cnpj;
+  String? documentNumber;
   String? month;
   String? value;
   String? issueDate;
@@ -8,6 +10,8 @@ class DasHistoryModel {
   String? status;
 
   DasHistoryModel.fromJson(Map<String, dynamic> json) {
+    cnpj = json["cnpj"];
+    documentNumber = json["documentNumber"];
     month = json["month"];
     value = json["value"];
     issueDate = json["issueDate"];
