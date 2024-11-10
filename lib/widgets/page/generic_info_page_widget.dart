@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
-import 'package:meu_das_flutter/utils/app_colors.dart';
-import 'package:meu_das_flutter/utils/app_strings.dart';
-import 'package:meu_das_flutter/utils/validate_utils.dart';
-import 'package:meu_das_flutter/widgets/utils/button_widget.dart';
-import 'package:meu_das_flutter/widgets/utils/input_widget.dart';
-import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
+import 'package:meuDas/utils/app_colors.dart';
+import 'package:meuDas/utils/app_strings.dart';
+import 'package:meuDas/utils/validate_utils.dart';
+import 'package:meuDas/widgets/utils/button_widget.dart';
+import 'package:meuDas/widgets/utils/input_widget.dart';
+import 'package:meuDas/widgets/utils/text_widget.dart';
 
 class GenericInfoPageWidget extends StatefulWidget {
   final IconData icon;

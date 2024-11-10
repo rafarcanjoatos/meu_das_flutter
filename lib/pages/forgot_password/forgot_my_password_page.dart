@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
-import 'package:meu_das_flutter/pages/forgot_password/email_sended_page.dart';
-import 'package:meu_das_flutter/utils/app_strings.dart';
-import 'package:meu_das_flutter/utils/navigator_utils.dart';
-import 'package:meu_das_flutter/widgets/page/generic_info_page_widget.dart';
+import 'package:meuDas/pages/forgot_password/email_sended_page.dart';
+import 'package:meuDas/utils/app_strings.dart';
+import 'package:meuDas/utils/navigator_utils.dart';
+import 'package:meuDas/widgets/page/generic_info_page_widget.dart';
 
 class ForgotMyPasswordPage extends StatefulWidget {
   const ForgotMyPasswordPage({super.key});

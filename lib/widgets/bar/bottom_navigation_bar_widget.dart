@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:meu_das_flutter/pages/app/dashboard_page.dart';
-import 'package:meu_das_flutter/pages/app/home_page.dart';
-import 'package:meu_das_flutter/pages/app/notifications_page.dart';
-import 'package:meu_das_flutter/services/cache_manager_service.dart';
-import 'package:meu_das_flutter/utils/app_colors.dart';
-import 'package:meu_das_flutter/utils/app_strings.dart';
+import 'package:meuDas/pages/app/dashboard_page.dart';
+import 'package:meuDas/pages/app/home_page.dart';
+import 'package:meuDas/pages/app/notifications_page.dart';
+import 'package:meuDas/services/cache_manager_service.dart';
+import 'package:meuDas/utils/app_colors.dart';
+import 'package:meuDas/utils/app_strings.dart';
 
 // ignore: must_be_immutable
 class BottomNavigationBarWidget extends StatefulWidget {

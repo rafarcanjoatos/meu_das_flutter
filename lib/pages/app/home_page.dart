@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meu_das_flutter/widgets/menu/grid_view_widget.dart';
-import 'package:meu_das_flutter/widgets/page/generic_app_page_widget.dart';
+import 'package:meuDas/widgets/menu/grid_view_widget.dart';
+import 'package:meuDas/widgets/page/generic_app_page_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

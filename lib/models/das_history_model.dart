@@ -4,7 +4,7 @@ class DasHistoryModel {
   String? cnpj;
   String? documentNumber;
   String? month;
-  String? value;
+  double? value;
   String? issueDate;
   String? dueDate;
   String? status;
@@ -27,7 +27,7 @@ String calculateRbt12(List<DasHistoryModel> dasHistory) {
   for (var history in dasHistory) {
     final DateTime issueDate = DateTime.parse(history.issueDate!);
     if (issueDate.year == year) {
-      final double valor = double.parse(history.value!.replaceAll('R\$', ''));
+      final double valor = history.value!;
       sum += valor;
     }
   }

@@ -76,4 +76,6 @@ class AppStrings {
 
   static const String noNotification = "Não há notificações";
   static const String deletedNotification = "Notificação excluída com sucesso";
+
+  static const String billingError = "Faturamento precisa ser maior que zero";
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:meu_das_flutter/models/das_history_model.dart';
-import 'package:meu_das_flutter/services/cache_manager_service.dart';
-import 'package:meu_das_flutter/utils/app_colors.dart';
-import 'package:meu_das_flutter/utils/date_format_utils.dart';
-import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
+import 'package:meuDas/models/das_history_model.dart';
+import 'package:meuDas/services/cache_manager_service.dart';
+import 'package:meuDas/utils/app_colors.dart';
+import 'package:meuDas/utils/date_format_utils.dart';
+import 'package:meuDas/widgets/utils/text_widget.dart';
 
 class TableDasHistories extends StatefulWidget {
   final bool hasRbtContainer;

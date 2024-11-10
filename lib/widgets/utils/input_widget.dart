@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
+import 'package:meuDas/widgets/utils/text_widget.dart';
 
 class InputWidget extends StatefulWidget {
   final String hintText;

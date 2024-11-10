@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:meu_das_flutter/pages/app/company_info_page.dart';
-import 'package:meu_das_flutter/pages/app/das_history_page.dart';
-import 'package:meu_das_flutter/pages/app/das_page.dart';
-import 'package:meu_das_flutter/pages/app/dashboard_page.dart';
-import 'package:meu_das_flutter/pages/app/user_info_page.dart';
-import 'package:meu_das_flutter/utils/app_strings.dart';
-import 'package:meu_das_flutter/widgets/utils/item_menu_widget.dart';
+import 'package:meuDas/pages/app/company_info_page.dart';
+import 'package:meuDas/pages/app/das_history_page.dart';
+import 'package:meuDas/pages/app/das_page.dart';
+import 'package:meuDas/pages/app/dashboard_page.dart';
+import 'package:meuDas/pages/app/user_info_page.dart';
+import 'package:meuDas/utils/app_strings.dart';
+import 'package:meuDas/widgets/utils/item_menu_widget.dart';
 
 class GridViewWidget extends StatefulWidget {
   const GridViewWidget({super.key});

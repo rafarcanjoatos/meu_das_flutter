@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:meu_das_flutter/pages/app/user_edit_page.dart';
-import 'package:meu_das_flutter/services/cache_manager_service.dart';
-import 'package:meu_das_flutter/utils/app_strings.dart';
-import 'package:meu_das_flutter/utils/navigator_utils.dart';
-import 'package:meu_das_flutter/widgets/page/generic_app_page_widget.dart';
-import 'package:meu_das_flutter/widgets/utils/button_widget.dart';
-import 'package:meu_das_flutter/widgets/utils/input_widget.dart';
+import 'package:meuDas/pages/app/user_edit_page.dart';
+import 'package:meuDas/services/cache_manager_service.dart';
+import 'package:meuDas/utils/app_strings.dart';
+import 'package:meuDas/utils/navigator_utils.dart';
+import 'package:meuDas/widgets/page/generic_app_page_widget.dart';
+import 'package:meuDas/widgets/utils/button_widget.dart';
+import 'package:meuDas/widgets/utils/input_widget.dart';
 
 class UserInfoPage extends StatefulWidget {
   const UserInfoPage({super.key});

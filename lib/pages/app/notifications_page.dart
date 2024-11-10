@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:meu_das_flutter/services/cache_manager_service.dart';
-import 'package:meu_das_flutter/utils/app_colors.dart';
-import 'package:meu_das_flutter/utils/app_strings.dart';
-import 'package:meu_das_flutter/utils/snackbar_utils.dart';
-import 'package:meu_das_flutter/widgets/page/generic_app_page_widget.dart';
-import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
-import 'package:meu_das_flutter/models/notification_model.dart';
+import 'package:meuDas/services/cache_manager_service.dart';
+import 'package:meuDas/utils/app_colors.dart';
+import 'package:meuDas/utils/app_strings.dart';
+import 'package:meuDas/utils/snackbar_utils.dart';
+import 'package:meuDas/widgets/page/generic_app_page_widget.dart';
+import 'package:meuDas/widgets/utils/text_widget.dart';
+import 'package:meuDas/models/notification_model.dart';
 
 class NotificationsPage extends StatefulWidget {
   const NotificationsPage({super.key});

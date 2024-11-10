@@ -1,15 +1,15 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:meu_das_flutter/models/company_model.dart';
-import 'package:meu_das_flutter/models/das_history_model.dart';
-import 'package:meu_das_flutter/models/notification_model.dart';
-import 'package:meu_das_flutter/models/user_model.dart';
+import 'package:meuDas/models/company_model.dart';
+import 'package:meuDas/models/das_history_model.dart';
+import 'package:meuDas/models/notification_model.dart';
+import 'package:meuDas/models/user_model.dart';
 import 'package:path_provider/path_provider.dart';
 
 abstract class CacheManagerService {
   static Future<void> initializeData() async {
-    bool recreateDataForTests = true;
+    bool recreateDataForTests = false;
 
     Map<String, dynamic> companyData = {
       "cnpj": "56.443.512/0001-87",
@@ -56,7 +56,7 @@ abstract class CacheManagerService {
           "id": 4,
           "title": "Gerar DAS",
           "message": "Está na hora de gerar sua DAS",
-          "timestamp": "2024-11-10T13:00:00Z"
+          "timestamp": "2024-11-10T13:01:00Z"
         },
         {
           "id": 5,
@@ -73,7 +73,7 @@ abstract class CacheManagerService {
           "cnpj": "56.443.512/0001-87",
           "documentNumber": "07.20.18310.6186667-1",
           "month": "SEP/24",
-          "value": "120.00",
+          "value": 120.00,
           "issueDate": "2024-09-02T00:00:00",
           "dueDate": "2024-09-07T00:00:00",
           "status": "VENCIDO"

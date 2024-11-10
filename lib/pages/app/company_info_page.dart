@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:meu_das_flutter/services/cache_manager_service.dart';
-import 'package:meu_das_flutter/widgets/page/generic_app_page_widget.dart';
-import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
+import 'package:meuDas/services/cache_manager_service.dart';
+import 'package:meuDas/widgets/page/generic_app_page_widget.dart';
+import 'package:meuDas/widgets/utils/text_widget.dart';
 
 class CompanyInfoPage extends StatefulWidget {
   const CompanyInfoPage({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:meu_das_flutter/utils/app_colors.dart';
+import 'package:meuDas/utils/app_colors.dart';
 
 class TextWidget extends StatefulWidget {
   final String text;

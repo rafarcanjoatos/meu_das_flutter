@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:meu_das_flutter/utils/app_strings.dart';
-import 'package:meu_das_flutter/utils/navigator_utils.dart';
-import 'package:meu_das_flutter/utils/snackbar_utils.dart';
+import 'package:meuDas/utils/app_strings.dart';
+import 'package:meuDas/utils/navigator_utils.dart';
+import 'package:meuDas/utils/snackbar_utils.dart';
 
 mixin ValidateUtils {
   static void login(

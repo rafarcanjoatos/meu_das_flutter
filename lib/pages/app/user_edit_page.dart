@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
-import 'package:meu_das_flutter/pages/app/user_info_page.dart';
-import 'package:meu_das_flutter/services/cache_manager_service.dart';
-import 'package:meu_das_flutter/utils/app_strings.dart';
-import 'package:meu_das_flutter/utils/snackbar_utils.dart';
-import 'package:meu_das_flutter/widgets/modal/dialog_modal.dart';
-import 'package:meu_das_flutter/widgets/page/generic_app_page_widget.dart';
-import 'package:meu_das_flutter/widgets/utils/button_widget.dart';
-import 'package:meu_das_flutter/widgets/utils/input_widget.dart';
+import 'package:meuDas/pages/app/user_info_page.dart';
+import 'package:meuDas/services/cache_manager_service.dart';
+import 'package:meuDas/utils/app_strings.dart';
+import 'package:meuDas/utils/snackbar_utils.dart';
+import 'package:meuDas/widgets/modal/dialog_modal.dart';
+import 'package:meuDas/widgets/page/generic_app_page_widget.dart';
+import 'package:meuDas/widgets/utils/button_widget.dart';
+import 'package:meuDas/widgets/utils/input_widget.dart';
 
 class UserEditPage extends StatefulWidget {
   const UserEditPage({super.key});

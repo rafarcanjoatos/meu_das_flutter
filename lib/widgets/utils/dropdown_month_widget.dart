@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meu_das_flutter/utils/app_strings.dart';
-import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
+import 'package:meuDas/utils/app_strings.dart';
+import 'package:meuDas/widgets/utils/text_widget.dart';
 
 class DropdownMonthWidget extends StatefulWidget {
   final String title;
@@ -10,6 +10,7 @@ class DropdownMonthWidget extends StatefulWidget {
     super.key,
     this.title = " ",
     required this.onMonthChanged,
+    required Function(dynamic value) validator,
   });
 
   @override

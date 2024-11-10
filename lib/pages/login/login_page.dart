@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
-import 'package:meu_das_flutter/pages/app/home_page.dart';
-import 'package:meu_das_flutter/pages/forgot_password/forgot_my_password_page.dart';
-import 'package:meu_das_flutter/utils/app_strings.dart';
-import 'package:meu_das_flutter/utils/navigator_utils.dart';
-import 'package:meu_das_flutter/utils/validate_utils.dart';
-import 'package:meu_das_flutter/widgets/utils/button_widget.dart';
-import 'package:meu_das_flutter/widgets/utils/input_widget.dart';
-import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
+import 'package:meuDas/pages/app/home_page.dart';
+import 'package:meuDas/pages/forgot_password/forgot_my_password_page.dart';
+import 'package:meuDas/utils/app_strings.dart';
+import 'package:meuDas/utils/navigator_utils.dart';
+import 'package:meuDas/utils/validate_utils.dart';
+import 'package:meuDas/widgets/utils/button_widget.dart';
+import 'package:meuDas/widgets/utils/input_widget.dart';
+import 'package:meuDas/widgets/utils/text_widget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

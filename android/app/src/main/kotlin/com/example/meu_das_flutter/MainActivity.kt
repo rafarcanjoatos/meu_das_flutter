@@ -1,4 +1,4 @@
-package com.example.meu_das_flutter
+package com.example.meuDas
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:meu_das_flutter/utils/app_strings.dart';
-import 'package:meu_das_flutter/utils/navigator_utils.dart';
-import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
+import 'package:meuDas/utils/app_strings.dart';
+import 'package:meuDas/utils/navigator_utils.dart';
+import 'package:meuDas/widgets/utils/text_widget.dart';
 
 class DialogModal extends StatefulWidget {
   final String title;

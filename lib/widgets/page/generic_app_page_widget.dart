@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:meu_das_flutter/services/cache_manager_service.dart';
-import 'package:meu_das_flutter/utils/app_colors.dart';
-import 'package:meu_das_flutter/widgets/bar/app_bar_widget.dart';
-import 'package:meu_das_flutter/widgets/bar/bottom_navigation_bar_widget.dart';
-import 'package:meu_das_flutter/widgets/utils/text_widget.dart';
+import 'package:meuDas/services/cache_manager_service.dart';
+import 'package:meuDas/utils/app_colors.dart';
+import 'package:meuDas/widgets/bar/app_bar_widget.dart';
+import 'package:meuDas/widgets/bar/bottom_navigation_bar_widget.dart';
+import 'package:meuDas/widgets/utils/text_widget.dart';
 
 class GenericAppPageWidget extends StatefulWidget {
   final Widget body;

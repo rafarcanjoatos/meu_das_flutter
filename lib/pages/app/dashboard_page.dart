@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meu_das_flutter/widgets/page/generic_app_page_widget.dart';
-import 'package:meu_das_flutter/widgets/utils/table_das_histories.dart';
+import 'package:meuDas/widgets/page/generic_app_page_widget.dart';
+import 'package:meuDas/widgets/utils/table_das_histories.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});

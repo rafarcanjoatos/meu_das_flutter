@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:intl/intl.dart';
-import 'package:meu_das_flutter/pages/app/das_history_page.dart';
-import 'package:meu_das_flutter/services/cache_manager_service.dart';
-import 'package:meu_das_flutter/utils/date_format_utils.dart';
-import 'package:meu_das_flutter/utils/navigator_utils.dart';
+import 'package:meuDas/pages/app/das_history_page.dart';
+import 'package:meuDas/services/cache_manager_service.dart';
+import 'package:meuDas/utils/date_format_utils.dart';
+import 'package:meuDas/utils/navigator_utils.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
@@ -27,7 +27,7 @@ class _DasModelPageWidgetState extends State<DasModelPageWidget> {
   Widget build(BuildContext context) {
     DateTime now = DateTime.now();
 
-    String issueDate = DateFormat('yyyy-MM-dd').format(now);
+    String issueDate = DateFormat('dd-MM-yy').format(now);
     String periodDate = DateFormat('MMM/yy').format(now);
     String dueDate =
         DateFormatUtils.formatDate(now.add(const Duration(days: 5)));
@@ -220,14 +220,17 @@ class _DasModelPageWidgetState extends State<DasModelPageWidget> {
       ),
     );
 
+    String issueDateTime = DateFormatUtils.formatToStringDateTime(issueDate);
+    String dueDateTime = DateFormatUtils.formatToStringDateTime(dueDate);
+
     final Map<String, dynamic> newEntry = {
       "cnpj": "27.339.063/0001-23",
       "documentNumber": "07.20.18310.6186667-1",
-      "month": periodDate,
-      "value": moneyBilling.numberValue,
-      "issueDate": issueDate,
-      "dueDate": dueDate,
-      "status": "Gerado"
+      "month": periodDate.toUpperCase(),
+      "value": moneyBilling.numberValue.toDouble(),
+      "issueDate": issueDateTime,
+      "dueDate": dueDateTime,
+      "status": "GERADO"
     };
 
     await CacheManagerService.insertDasHistoryData(newEntry);
